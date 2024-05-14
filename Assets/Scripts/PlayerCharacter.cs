@@ -13,15 +13,24 @@ public class PlayerCharacter : CharacterBase
       
     }
 
-    public void Inputs()
+    void Update()
     {
         //Check if MoveForward input is being used
         float moveForward = Input.GetAxis("Forward");
-        //if (moveForward != 0.0f)
-       // {
+        //float moveForward = Input.GetAxis("Forward");
+        if (moveForward != 0)
+        {
             Debug.Log("Move Forward Variable" + moveForward);
             // Call MoveForward from CharacterBase to make player move forward or backwards depending on value
             MoveForward(moveForward);
-     //   }
+        }
+
+        float moveRight = Input.GetAxis("MoveRight");
+        if (moveRight != 0)
+        {
+            Debug.Log("Move Right Variable" + moveRight);
+            MoveRight(moveRight);
+        
+        }
     }
 }

@@ -31,13 +31,14 @@ public abstract class CharacterBase : MonoBehaviour
     public void MoveForward(float moveForward)
     {
         // make character walk forward or backward based on their walk speed
-        transform.localPosition = transform.forward * walkSpeed * Time.deltaTime;
+        //transform.localPosition = transform.forward * moveForward * walkSpeed * Time.deltaTime;
+        ourRigidBody.velocity =  moveForward * transform.forward * walkSpeed;
     }
 
     public void MoveRight(float moveRight)
     {
         // make character move left or right based on their walk speed
-        transform.localPosition = transform.right * walkSpeed * Time.deltaTime; 
+        ourRigidBody.velocity = moveRight * transform.right * walkSpeed;
     }
 
     /*
