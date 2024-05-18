@@ -4,10 +4,10 @@ using UnityEngine;
 
 public abstract class Pickups
 {
-    public float respawnDelay: 10;
-    Soundplayer respawnSFX = new respawnSFX(/*Needs filling*/);
-    Soundplayer pickupSFX = new pickupSFX(/*Needs filling*/);
-    bool respawn: true;
+    public float respawnDelay = 10;
+    public object respawnSFX;
+    public object pickupSFX;
+    bool respawn = true;
 
     /// - Check if interaction is with playercharacter
     /// - If false do nothing, if true and health pickup increase playercharacter health by X
@@ -37,8 +37,8 @@ class ammoPickup : Pickups
 
 class weaponPickup : Pickups
 {
-    public gameObejct weapon;
-    bool collectionEnabled: true;
+    public object weapon;
+    bool collectionEnabled = true;
 
     /// Is interaction with Playercharacter 
     /// Remove or destroy current weapon

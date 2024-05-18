@@ -20,33 +20,50 @@ public abstract class CharacterBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //set activeWeaponSlot to 1 for the initial weapon to be selected
+        //weapon1 = GetComponents<WeaponBase>();
+
+        // set activeWeaponSlot to 1 for the initial weapon to be selected
         activeWeaponSlot = 1;
 
-        //Populate ourRigidBody
+        // Populate ourRigidBody
         ourRigidBody = GetComponent<Rigidbody>();
 
     }
 
-    public void MoveForward(float moveForward)
+    public void Move(float moveForward, float moveRight) 
     {
-        // make character walk forward or backward based on their walk speed
-        //transform.localPosition = transform.forward * moveForward * walkSpeed * Time.deltaTime;
-        ourRigidBody.velocity =  moveForward * transform.forward * walkSpeed;
+        ourRigidBody.AddRelativeForce(new Vector3(moveRight, 0, moveForward));
+        //ourRigidBody.AddForce = moveRight * transform.right * walkSpeed * Time.deltaTime;
+        
     }
 
-    public void MoveRight(float moveRight)
+    public void LookRight(float lookRight) // make character turn right or left
     {
-        // make character move left or right based on their walk speed
-        ourRigidBody.velocity = moveRight * transform.right * walkSpeed;
+
     }
 
-    /*
-    public void Reload()
+    public void LookUp(float lookUp) // make character turn up or down
     {
-        //Check if the input for reload has been trigger
-        if (Input.GetButton("Reload") /*| Input.GetButton("ReloadController")*)
+        
+    }
+
+    public virtual void Reload() // Tell the weapon component to reload it's ammunition
+    {
+        if (Input.GetButton("Reload")) // | Input.GetButton("ReloadController")
         {
+            if (activeWeaponSlot == 1)
+            {
+               // weapon1.Reload();// tell Weapon1 to run it's reload function.
+            }
+            else
+            {
+                Debug.Log("No Weapon Attached");
+            }
+        }
+
+        /*  Move this to the WeaponBase class.
+        //Check if the input for reload has been trigger
+
 
             //check if ammo count is more than 0. If it is reload
             if (ammoCount > 0)
@@ -69,7 +86,25 @@ public abstract class CharacterBase : MonoBehaviour
                 ammoCount = 0;
                 Debug.Log("ammoCount Reset to '0'");
             }
+        }*/
+    }
+
+    public virtual void Shoot() // Tell the weapon component to fire
+    {
+        if (weapon1 != null)
+        {
+            if (activeWeaponSlot == 1)
+            {
+                // weapon1.Fire();
+            }
+            else
+            {
+                Debug.Log("Shoot(): Active Weapon outside of parameters or not set");
+            }
+        }
+        else
+        {
+            Debug.Log("No Weapons Attached");
         }
     }
-            */
 }
