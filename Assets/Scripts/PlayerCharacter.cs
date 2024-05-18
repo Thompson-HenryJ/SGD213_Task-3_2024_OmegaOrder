@@ -12,6 +12,8 @@ public class PlayerCharacter : CharacterBase
     // Start is called before the first frame update
     void Start()
     {
+        //Set Cursor to not be visible
+        Cursor.visible = false;
         //weapon2 = GetComponent<WeaponBase>();
     }
 

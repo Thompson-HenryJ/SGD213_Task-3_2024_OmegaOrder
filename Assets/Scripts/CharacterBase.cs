@@ -33,16 +33,14 @@ public abstract class CharacterBase : MonoBehaviour
     public void Move(float moveForward, float moveRight) 
     {
         ourRigidBody.AddRelativeForce(new Vector3(moveRight, 0, moveForward));
-        //ourRigidBody.AddForce = moveRight * transform.right * walkSpeed * Time.deltaTime;
-        
     }
 
     public void LookRight(float lookRight) // make character turn right or left
     {
-
+        ourRigidBody.transform.Rotate(0, lookRight, 0, Space.Self);
     }
 
-    public void LookUp(float lookUp) // make character turn up or down
+    public void LookUp(float lookUp) // make character look up or down
     {
         
     }
