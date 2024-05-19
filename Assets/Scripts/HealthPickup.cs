@@ -4,7 +4,7 @@ using UnityEngine;
 
 class HealthPickup : PickupBase
 {
-    public float healAmount;
+    [SerializeField] public float healAmount;
 
     /// Play pickupSFX
     /// Destroy healthPickup
@@ -12,8 +12,13 @@ class HealthPickup : PickupBase
 
     /// Start respawn timer and when it's equal to '0' respawn health pickup
     /// Play respawnSFX when respawn timer equals 0
-    protected override void ApplyEffect(GameObject player)
+    protected override void ApplyEffect(GameObject other)
     {
-
+        if (other.GetComponent<IHealth>() != null) 
+        {
+            other.GetComponent<IHealth>().Heal(healAmount);
+        } else {
+             Debug.Log(other.name + " does not have an IHealth component");
+        }
     }
 }

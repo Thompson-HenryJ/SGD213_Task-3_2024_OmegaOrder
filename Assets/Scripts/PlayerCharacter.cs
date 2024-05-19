@@ -26,7 +26,7 @@ public class PlayerCharacter : CharacterBase
         // get player inputs for movement of character
         float moveForward = Input.GetAxis("Forward");
         float moveRight = Input.GetAxis("Strafe");
-        Debug.Log("Move Forward:" + moveForward + " Move Right: " + moveRight);
+       // Debug.Log("Move Forward:" + moveForward + " Move Right: " + moveRight);
 
         // Call Move from CharacterBase to make player move forward/backwards and right/left
         Move(moveForward, moveRight);
@@ -34,7 +34,7 @@ public class PlayerCharacter : CharacterBase
         // get player inputs for rotation of character
         float lookUp = Input.GetAxis("LookUp");
         float lookRight = Input.GetAxis("LookRight");
-        Debug.Log("Look Up:" + lookUp + " Look Right: " + lookRight);
+       // Debug.Log("Look Up:" + lookUp + " Look Right: " + lookRight);
 
         // Call Move from CharacterBase to make player move forward/backwards and right/left
         LookRight(lookRight);

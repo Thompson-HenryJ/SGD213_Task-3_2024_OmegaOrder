@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PickupBase
+public abstract class PickupBase : MonoBehaviour
 {
     public float respawnDelay = 10;
     public AudioClip respawnSFX;
@@ -21,6 +21,10 @@ public abstract class PickupBase
             ApplyEffect(other.gameObject);
             // Destroy(gameObject);
             StartRespawnTimer();
+            Debug.Log(other.name + "has collided with pickup");
+        }
+        else {
+            Debug.Log(other.name + "does not have player tag");
         }
     }
 
