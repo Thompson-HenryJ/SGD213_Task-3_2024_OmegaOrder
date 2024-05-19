@@ -17,9 +17,9 @@ public abstract class PickupBase
     {
         if (other.CompareTag("Player"))
         {
-            PlayPickupSound();
+            // PlayPickupSound();
             ApplyEffect(other.gameObject);
-            Destroy(gameObject);
+            // Destroy(gameObject);
             StartRespawnTimer();
         }
     }
@@ -30,14 +30,14 @@ public abstract class PickupBase
     {
         if (pickupSFX != null)
         {
-            AudioSource.PlayClipAtPoint(pickupSFX, transform.position);
+            // AudioSource.PlayClipAtPoint(pickupSFX, transform.position);
         }
     }
 
     protected virtual void StartRespawnTimer()
     {
         respawn = false;
-        Invoke(nameof(Respawn), respawnDelay);
+        // Invoke(nameof(Respawn), respawnDelay);
     }
 
     protected virtual void Respawn()
@@ -45,48 +45,7 @@ public abstract class PickupBase
         respawn = true;
         if(respawnSFX != null)
         {
-            AudioSource.PlayClipAtPoint(respawnSFX, transform.position);
+            // AudioSource.PlayClipAtPoint(respawnSFX, transform.position);
         }
     }
-}
-
-class healthPickup : PickupBase
-{
-    public float healAmount; 
-
-    /// Play pickupSFX
-    /// Destroy healthPickup
-    /// Increase playerCharacters health by X ammount (Max Health being the limit)
-    
-    /// Start respawn timer and when it's equal to '0' respawn health pickup
-    /// Play respawnSFX when respawn timer equals 0
- 
-}
-
-class ammoPickup : PickupBase
-{
-    public int ammoAmount; 
-
-    /// Play pickupSFX
-    /// Destroy ammoPickup
-    /// Increase maxAmmo value by X ammount
-    /// Start respawn timer and when it's equal to '0' respawn ammo pickup
-    /// Play respawnSFX when respawn timer equals 0
-
-}
-
-class weaponPickup : PickupBase
-{
-    public object weapon;
-    bool collectionEnabled = true;
-
-    /// If 'weaponPickup == currentWeapon' then 'collectionEnabled = False' then do nothing and return
-    
-    /// If 'weaponPickup != currentWeapon' then 'collectionEnabled = True' then do the following below
-    /// playerCharacter's current weapon = Destroyed
-    /// playerCharacter picks up the new weapon
-    /// Start respawn timer 
-    /// timer = 0 then spawn new weapon
-    /// Play respawnSFX when respawn timer equals 0
-
 }
