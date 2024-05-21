@@ -13,7 +13,7 @@ public abstract class CharacterBase : MonoBehaviour
     public int activeWeaponSlot;
     [SerializeField]
     public GameObject weapon1;
-    public float walkSpeed = 500f;
+    public float walkSpeed = 10f;
 
 
 
