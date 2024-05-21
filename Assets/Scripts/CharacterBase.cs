@@ -58,33 +58,6 @@ public abstract class CharacterBase : MonoBehaviour
                 Debug.Log("No Weapon Attached");
             }
         }
-
-        /*  Move this to the WeaponBase class.
-        //Check if the input for reload has been trigger
-
-
-            //check if ammo count is more than 0. If it is reload
-            if (ammoCount > 0)
-            {
-                Debug.Log("Reloading");
-            }
-            //Check if ammoCount is equal to 0. If it is do not reload.
-            else if (ammoCount == 0)
-            {
-                Debug.Log("Out Of Ammo");
-            }
-            // Check if ammoCount exists on character. If it doesn't print to Debug.Log
-            else if (ammoCount == null)
-            {
-                Debug.Log("Attach ammoCount Variable");
-            }
-            //Check if ammoCount is less than 0. If it is set to 0.
-            else if (ammoCount < 0)
-            {
-                ammoCount = 0;
-                Debug.Log("ammoCount Reset to '0'");
-            }
-        }*/
     }
 
     public virtual void Shoot() // Tell the weapon component to fire
