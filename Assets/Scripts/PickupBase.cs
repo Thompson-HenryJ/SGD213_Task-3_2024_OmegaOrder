@@ -19,7 +19,7 @@ public abstract class PickupBase : MonoBehaviour
         {
             // PlayPickupSound();
             ApplyEffect(other.gameObject);
-            // Destroy(gameObject);
+            Destroy(gameObject);
             StartRespawnTimer();
             Debug.Log(other.name + "has collided with pickup");
         }
