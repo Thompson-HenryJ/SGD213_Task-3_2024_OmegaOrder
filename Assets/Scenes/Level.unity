@@ -167,9 +167,12 @@ GameObject:
   - component: {fileID: 809696493}
   - component: {fileID: 809696492}
   - component: {fileID: 809696491}
-  - component: {fileID: 809696497}
   - component: {fileID: 809696496}
-  - component: {fileID: 809696498}
+  - component: {fileID: 809696497}
+  - component: {fileID: 809696500}
+  - component: {fileID: 809696502}
+  - component: {fileID: 809696501}
+  - component: {fileID: 809696503}
   m_Layer: 0
   m_Name: EnemyCharacter
   m_TagString: Untagged
@@ -303,25 +306,78 @@ MonoBehaviour:
   m_GameObject: {fileID: 809696490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de14792af0df2e040acba434c3f18b18, type: 3}
+  m_Script: {fileID: 11500000, guid: d0c547e090907c844a6afdf2cd7a36f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points:
-  - {fileID: 378433602}
-  - {fileID: 1691292927}
---- !u!135 &809696498
-SphereCollider:
+--- !u!114 &809696500
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809696490}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de14792af0df2e040acba434c3f18b18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseState: {fileID: 0}
+  canSeePlayer: 0
+  points:
+  - {fileID: 378433602}
+  - {fileID: 1691292927}
+--- !u!114 &809696501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809696490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59764ffded3d30744ac119999f2c89cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &809696502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809696490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e4a275ff16cf04bba1a345e4b91c44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  attackState: {fileID: 0}
+  isInAttackRange: 0
+--- !u!114 &809696503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809696490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b654295321fdc2f41a26bbf5b4d1f313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseState: {fileID: 0}
+  canSeePlayer: 0
+  points: []
+  radius: 0
+  angle: 0
+  delay: 0.2
+  playerRef: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1359090793
 GameObject:
   m_ObjectHideFlags: 0
