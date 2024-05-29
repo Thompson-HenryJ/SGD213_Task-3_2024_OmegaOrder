@@ -5,7 +5,7 @@ using UnityEngine;
 class WeaponPickup : PickupBase
 {
     public object weapon;
-    bool collectionEnabled = true;
+    // bool collectionEnabled = true;
 
     /// If 'weaponPickup == currentWeapon' then 'collectionEnabled = False' then do nothing and return
 

@@ -60,11 +60,6 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
         {
             Debug.Log("Out Of Ammo");
         }
-        // Check if ammoCount exists on character. If it doesn't print to Debug.Log
-        else if (currentAmmo == null)
-        {
-            Debug.Log("Attach ammoCount Variable");
-        }
         //Check if ammoCount is less than 0. If it is set to 0.
         else if (currentAmmo < 0)
         {

@@ -586,7 +586,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973513689c6b7454eb61faabe6845716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnDelay: 5
+  spawnOnStart: 1
+  respawn: 1
+  respawnCD: 5
   respawnSFX: {fileID: 0}
   pickupSFX: {fileID: 0}
   healAmount: 10
