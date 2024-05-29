@@ -6,6 +6,8 @@ public class StateManager : MonoBehaviour
 {
     States currentState;
     PatrolPoints patrolPoints;
+    ChaseState chaseState;
+    AttackState attackState;
     void Start()
     {
         currentState = patrolPoints;

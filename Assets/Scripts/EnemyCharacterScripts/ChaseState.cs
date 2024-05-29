@@ -9,11 +9,19 @@ public class ChaseState : States
     private NavMeshAgent agent;
     public AttackState attackState;
     public bool isInAttackRange;
-
+    FieldOfView fov;
     private void Start()
     {
         player = GameObject.Find("PlayerCharacter").transform;
         agent = GetComponent<NavMeshAgent>();
+        fov = GetComponent<FieldOfView>();
+    }
+    private void Update()
+    {
+        if (fov.canSeePlayer)
+        {
+            Chase();
+        }
     }
     void Chase()
     {

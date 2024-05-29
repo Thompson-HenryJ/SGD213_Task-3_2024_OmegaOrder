@@ -4,22 +4,25 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using UnityEngine;
 
-public class FieldOfView : PatrolPoints
+public class FieldOfView : MonoBehaviour
 {
     public float radius;
     [Range(0,360)]
     public float angle;
     public float delay = 0.2f;
-
+    public bool canSeePlayer;
     public GameObject playerRef;
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
+   
+
 
     private void Start()
     {
         playerRef = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
+     
     }
 
     private IEnumerator FOVRoutine()
@@ -68,4 +71,6 @@ public class FieldOfView : PatrolPoints
             canSeePlayer = false;
         }
     }
+
+    
 }

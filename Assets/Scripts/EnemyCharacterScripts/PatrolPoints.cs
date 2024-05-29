@@ -7,11 +7,11 @@ using UnityEngine.AI;
 public class PatrolPoints: States
 {
     public ChaseState chaseState;
-    public bool canSeePlayer;
     public Transform[] points;
     private int destPoint = 0;
     private NavMeshAgent agent;
     Vector3 target;
+    FieldOfView fov;
 
 
     // Start is called before the first frame update
@@ -20,6 +20,7 @@ public class PatrolPoints: States
         //Get NavMeshAgent component
         agent = GetComponent<NavMeshAgent>();
         UpdateDestination();
+        fov = GetComponent<FieldOfView>();
     }
 
 
@@ -57,7 +58,7 @@ public class PatrolPoints: States
 
     public override States RunCurrentState()
     {
-        if (canSeePlayer)
+        if (fov.canSeePlayer)
         {
             return chaseState;
         }
