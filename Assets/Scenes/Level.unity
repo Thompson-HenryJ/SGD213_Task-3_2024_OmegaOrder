@@ -606,6 +606,8 @@ GameObject:
   - component: {fileID: 1631606479}
   - component: {fileID: 1631606480}
   - component: {fileID: 1631606478}
+  - component: {fileID: 1631606482}
+  - component: {fileID: 1631606481}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -706,10 +708,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ourRigidBody: {fileID: 1631606477}
   characterHeight: 2
-  activeWeaponSlot: 1
-  weapon1: {fileID: 0}
+  activeWeapon: 0
+  weapons: []
   walkSpeed: 10
-  weapon2: {fileID: 0}
+  secondaryWeapon: 0
   jumpSpeed: 5
 --- !u!54 &1631606477
 Rigidbody:
@@ -796,6 +798,40 @@ MonoBehaviour:
   rechargeDelay: 0
   rechargeInterval: 0
   rechargeAmount: 0
+--- !u!114 &1631606481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631606470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d660d729a67eb545b650d0c39ceffb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: 
+  fireDelay: 1
+  projectile: {fileID: 1134493335557051046, guid: 649a5ca4cad1fc34381dcb18c2fe0d92, type: 3}
+  maxAmmo: 50
+  maxClip: 9
+--- !u!114 &1631606482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631606470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb776763de013bd46afa7cb0fa5b3d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: 
+  fireDelay: 1
+  projectile: {fileID: 2131042462024617993, guid: df6c2aa2a158dc44899881ef098db869, type: 3}
+  maxAmmo: 0
+  maxClip: 0
 --- !u!1 &1691292923
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,29 +5,31 @@ using UnityEngine;
 
 public abstract class CharacterBase : MonoBehaviour
 {
-
-
     //Declare all variables
     public Rigidbody ourRigidBody;
     public float characterHeight;
-    public int activeWeaponSlot;
+    public int activeWeapon;
     [SerializeField]
-    public GameObject weapon1;
+    public Component [] weapons;
     public float walkSpeed = 10f;
 
-
-
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
-        //weapon1 = GetComponents<WeaponBase>();
-
-        // set activeWeaponSlot to 1 for the initial weapon to be selected
-        activeWeaponSlot = 1;
-
         // Populate ourRigidBody
         ourRigidBody = GetComponent<Rigidbody>();
+        weapons = GetComponents<WeaponBase>();
+        Debug.Log(weapons.Length + " weapons added to " + this);
 
+        if (weapons != null)
+        {
+            // set activeWeapon to 0 for the initial weapon to be selected
+            activeWeapon = 0;
+        }
+        else
+        {
+            Debug.Log("No weapons added.");
+        }
     }
 
     public void Move(float moveForward, float moveRight) 
@@ -49,29 +51,15 @@ public abstract class CharacterBase : MonoBehaviour
     {
         if (Input.GetButton("Reload")) // | Input.GetButton("ReloadController")
         {
-            if (activeWeaponSlot == 1)
-            {
-               // weapon1.Reload();// tell Weapon1 to run it's reload function.
-            }
-            else
-            {
-                Debug.Log("No Weapon Attached");
-            }
+            Debug.Log("No Weapon Attached");
         }
     }
 
     public virtual void Shoot() // Tell the weapon component to fire
     {
-        if (weapon1 != null)
-        {
-            if (activeWeaponSlot == 1)
-            {
-                // weapon1.Fire();
-            }
-            else
-            {
-                Debug.Log("Shoot(): Active Weapon outside of parameters or not set");
-            }
+        if (weapons != null)
+        {    
+            Debug.Log("Shoot(): Active Weapon outside of parameters or not set");
         }
         else
         {

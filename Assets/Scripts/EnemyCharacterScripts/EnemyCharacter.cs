@@ -7,9 +7,10 @@ public class EnemyCharacter : CharacterBase
     
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-   
+        base.Start();  // Run everything from Start in the abstract base class first.
+
     }
 
     // Update is called once per frame

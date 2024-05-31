@@ -76,17 +76,22 @@ public abstract class PickupBase : MonoBehaviour
     private IEnumerator RespawnTimer(float respawnCD)
     {
         yield return new WaitForSeconds(respawnCD);
-        if (respawnSFX != null)
-        {
-            // AudioSource.PlayClipAtPoint(respawnSFX, transform.position);
-        }
-        ourCollider.enabled = true;
-        ourMesh.enabled = true;
+        Respawn();
     }
 
     protected virtual void StartRespawnTimer() // Enables the pickup by turning on overlap events and the mesh
     {
         respawnTimer = RespawnTimer(respawnCD);
         StartCoroutine(respawnTimer);
+    }
+
+    public virtual void Respawn()
+    {
+        if (respawnSFX != null)
+        {
+            // AudioSource.PlayClipAtPoint(respawnSFX, transform.position);
+        }
+        ourCollider.enabled = true;
+        ourMesh.enabled = true;
     }
 }

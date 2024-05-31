@@ -5,16 +5,16 @@ using UnityEngine;
 public interface IWeapon
 {
     // Stores the current ammunition that the character holds for this
-    float CurrentAmmo { get; }
+    int CurrentAmmo { get; }
 
     // Stores the maximum ammunition that the character can hold for this weapon
-    float MaxAmmo { get; }
+    int MaxAmmo { get; }
 
     // Stores the current amount of ammunition that is in this weapons ammo clip
-    float CurrentClip { get; }
+    int CurrentClip { get; }
 
     // Stores the maximum amount of ammunition that can be held in this weapons ammo clip
-    float MaxClip { get; }
+    int MaxClip { get; }
 
     // Stores a reference to the type of ammunition that the weapon shoots
     GameObject Projectile { get; }

@@ -5,19 +5,19 @@ using UnityEngine;
 public class PlayerCharacter : CharacterBase
 {
 
-    public GameObject weapon2;
+    public float secondaryWeapon;
     [SerializeField]
     public float jumpSpeed = 100;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
         //Set Cursor to not be visible
         Cursor.visible = false;
-        //weapon2 = GetComponent<WeaponBase>();
     }
 
-    void Update()
+    public void Update()
     {
         if (Input.GetButtonDown("Jump"))
         {
@@ -47,55 +47,23 @@ public class PlayerCharacter : CharacterBase
     {
         if (Input.GetButton("Reload")) // | Input.GetButton("ReloadController")
         {
-            if (activeWeaponSlot == 1)
-            {
-               // weapon1.Reload(); // tell Weapon1 to run it's reload function.
-            }
-            else if (activeWeaponSlot == 2)
-            {
-               // weapon2.Reload(); // tell Weapon2 to run it's reload function.
-            }
-            else
-            {
-                Debug.Log("No Weapon Attached");
-            }
+            Debug.Log("No Weapon Attached");
         }
     }
 
     public void SwapWeapon()
     {
-        if (activeWeaponSlot == 1)
-        {
-            activeWeaponSlot = 2;
-        }
-        else if (activeWeaponSlot == 2)
-        {
-            activeWeaponSlot = 1;
-        }
-        else
-        {
-            Debug.Log("WeaponSwap(): Active Weapon outside of parameters or not set");
-        }
+    
+        Debug.Log("WeaponSwap(): Active Weapon outside of parameters or not set");
         /* Insert anything that happens for the weapon swap... ie. Updating the HUD graphics
          */
     }
 
     public override void Shoot() // Tell the weapon component to fire
     {
-        if (weapon1 != null)
+        if (weapons != null)
         {
-            if (activeWeaponSlot == 1)
-            {
-                // weapon1.Fire();
-            }
-            else if (activeWeaponSlot == 2)
-            {
-                // weapon2.Fire();
-            }
-            else
-            {
-                Debug.Log("Shoot(): Active Weapon outside of parameters or not set");
-            }
+           Debug.Log("");
         }
         else
         {
