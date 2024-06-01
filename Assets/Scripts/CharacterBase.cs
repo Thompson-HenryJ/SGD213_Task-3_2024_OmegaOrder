@@ -58,8 +58,9 @@ public abstract class CharacterBase : MonoBehaviour
     public virtual void Shoot() // Tell the weapon component to fire
     {
         if (weapons != null)
-        {    
-            Debug.Log("Shoot(): Active Weapon outside of parameters or not set");
+        {
+            WeaponBase primaryWeapon = (WeaponBase)weapons[activeWeapon];
+            primaryWeapon.Fire();
         }
         else
         {

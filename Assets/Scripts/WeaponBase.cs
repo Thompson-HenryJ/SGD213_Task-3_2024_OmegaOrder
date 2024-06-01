@@ -5,54 +5,62 @@ using UnityEngine;
 public abstract class WeaponBase : MonoBehaviour, IWeapon
 {
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         currentAmmo = maxAmmo;
         currentClip = maxClip;
+        Debug.Log(this.name + ". CurrentAmmo: " + currentAmmo + ". CurrentClip: " + currentClip + ".");
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
 
     }
-    public string weaponName;
+
+    [field: SerializeField] public string weaponName { get; set; }
+    public string WeaponName { get { return weaponName; } }
     
     // Stores the current ammunition that the character holds for this
-    int currentAmmo { get; set; }
+    public int currentAmmo { get; set; }
     public int CurrentAmmo { get { return currentAmmo; } }
 
     // Stores the maximum ammunition that the character can hold for this weapon
-    int maxAmmo { get; set; }
+    [field: SerializeField] public int maxAmmo { get; set; }
     public int MaxAmmo { get { return maxAmmo; } }
 
     // Stores the current amount of ammunition that is in this weapons ammo clip
-    int currentClip { get; set; }
+    public int currentClip { get; set; }
     public int CurrentClip { get { return currentClip; } }
 
     // Stores the maximum amount of ammunition that can be held in this weapons ammo clip
-    int maxClip { get; }
+    [field: SerializeField] public int maxClip { get; set; }
     public int MaxClip { get { return maxClip; } }
-    
+
     // Stores a reference to the type of ammunition that the weapon shoots
-    GameObject projectile { get; }
+    [field: SerializeField] public GameObject projectile { get; set; }
     public GameObject Projectile { get { return projectile; } }
 
-    protected float lastFiredTime = 0f;
-    [SerializeField]
-    public float fireDelay = 1f;
+    public float lastFiredTime { get; set; }
+    public float LastFiredTime { get { return lastFiredTime; } }
+
+    [field: SerializeField] public float fireDelay { get; set; }
+    public float FireDelay { get { return fireDelay; } }
 
     // Functionality for firing the weapon
     public virtual void Fire()
     {
         float currentTime = Time.time;
+        GameObject newbullet;
         if (currentTime - lastFiredTime > fireDelay)
         {
             if (currentClip > 0)
             {
                 currentAmmo--;
                 currentClip--;
-                Instantiate(projectile); // Add bullet spawn location & direction   
+                newbullet = Instantiate(projectile); // Add bullet spawn location & direction
+                lastFiredTime = Time.time;
+
             }
             else if (currentClip == 0)
             {

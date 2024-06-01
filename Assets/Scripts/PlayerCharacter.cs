@@ -15,31 +15,35 @@ public class PlayerCharacter : CharacterBase
         base.Start();
         //Set Cursor to not be visible
         Cursor.visible = false;
+        activeWeapon = 1;
     }
 
     public void Update()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
-        // get player inputs for movement of character
+        // Get player inputs for movement of character
         float moveForward = Input.GetAxis("Forward");
         float moveRight = Input.GetAxis("Strafe");
-       // Debug.Log("Move Forward:" + moveForward + " Move Right: " + moveRight);
 
         // Call Move from CharacterBase to make player move forward/backwards and right/left
         Move(moveForward, moveRight);
 
-        // get player inputs for rotation of character
+        // Get player inputs for rotation of character
         float lookUp = Input.GetAxis("LookUp");
         float lookRight = Input.GetAxis("LookRight");
-       // Debug.Log("Look Up:" + lookUp + " Look Right: " + lookRight);
 
-        // Call Move from CharacterBase to make player move forward/backwards and right/left
+        //Rotates the character left and right.
         LookRight(lookRight);
         LookUp(lookUp);
 
+        if (Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+
+        if (Input.GetButtonDown("Shoot"))
+        {
+            Shoot();
+        }
     }
 
 
@@ -59,18 +63,6 @@ public class PlayerCharacter : CharacterBase
          */
     }
 
-    public override void Shoot() // Tell the weapon component to fire
-    {
-        if (weapons != null)
-        {
-           Debug.Log("");
-        }
-        else
-        {
-            Debug.Log("No Weapons Attached");
-        }
-    }
- 
     public void Jump()
     {
         ourRigidBody.AddForce(0, jumpSpeed, 0, ForceMode.Impulse);

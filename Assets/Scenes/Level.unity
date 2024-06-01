@@ -687,7 +687,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631606470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.28, z: 0}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -708,7 +708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ourRigidBody: {fileID: 1631606477}
   characterHeight: 2
-  activeWeapon: 0
+  activeWeapon: 1
   weapons: []
   walkSpeed: 10
   secondaryWeapon: 0
@@ -810,11 +810,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d660d729a67eb545b650d0c39ceffb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: 
-  fireDelay: 1
-  projectile: {fileID: 1134493335557051046, guid: 649a5ca4cad1fc34381dcb18c2fe0d92, type: 3}
-  maxAmmo: 50
-  maxClip: 9
+  <weaponName>k__BackingField: Pistol
+  <maxAmmo>k__BackingField: 54
+  <maxClip>k__BackingField: 9
+  <projectile>k__BackingField: {fileID: 1134493335557051046, guid: 649a5ca4cad1fc34381dcb18c2fe0d92, type: 3}
+  <fireDelay>k__BackingField: 1
 --- !u!114 &1631606482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,11 +827,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb776763de013bd46afa7cb0fa5b3d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: 
-  fireDelay: 1
-  projectile: {fileID: 2131042462024617993, guid: df6c2aa2a158dc44899881ef098db869, type: 3}
-  maxAmmo: 0
-  maxClip: 0
+  <weaponName>k__BackingField: Grenade
+  <maxAmmo>k__BackingField: 5
+  <maxClip>k__BackingField: 5
+  <projectile>k__BackingField: {fileID: 2131042462024617993, guid: df6c2aa2a158dc44899881ef098db869, type: 3}
+  <fireDelay>k__BackingField: 10
 --- !u!1 &1691292923
 GameObject:
   m_ObjectHideFlags: 0

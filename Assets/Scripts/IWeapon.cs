@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IWeapon
 {
+    string weaponName { get; }
+
     // Stores the current ammunition that the character holds for this
     int CurrentAmmo { get; }
 
@@ -19,7 +21,6 @@ public interface IWeapon
     // Stores a reference to the type of ammunition that the weapon shoots
     GameObject Projectile { get; }
 
-
     // Functionality for firing the weapon
     void Fire();
 
@@ -28,4 +29,8 @@ public interface IWeapon
 
     // Functionality for reloading the weapon
     void Reload();
+
+    float LastFiredTime { get; }
+    
+    float FireDelay {  get; }
 }
