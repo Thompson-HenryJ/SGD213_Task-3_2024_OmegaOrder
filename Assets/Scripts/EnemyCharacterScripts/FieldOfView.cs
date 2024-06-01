@@ -13,6 +13,7 @@ public class FieldOfView : MonoBehaviour
     public bool canSeePlayer;
     public GameObject playerRef;
 
+    //Declaration of layermasks to create obstructions
     public LayerMask targetMask;
     public LayerMask obstructionMask;
    
@@ -20,7 +21,9 @@ public class FieldOfView : MonoBehaviour
 
     private void Start()
     {
+        //Set playerRef to be playercharacter
         playerRef = GameObject.FindGameObjectWithTag("Player");
+        //Set Coroutine for delay to not call the function every frame (Performance saving)
         StartCoroutine(FOVRoutine());
      
     }
@@ -32,6 +35,7 @@ public class FieldOfView : MonoBehaviour
 
         while (true)
         {
+            //Continue calling functionality of Coroutine
             yield return wait;
             FieldOfViewCheck();
 

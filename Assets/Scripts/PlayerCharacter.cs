@@ -8,13 +8,12 @@ public class PlayerCharacter : CharacterBase
     public float secondaryWeapon;
     [SerializeField]
     public float jumpSpeed = 100;
+   
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
-        //Set Cursor to not be visible
-        Cursor.visible = false;
         activeWeapon = 1;
     }
 
@@ -27,13 +26,11 @@ public class PlayerCharacter : CharacterBase
         // Call Move from CharacterBase to make player move forward/backwards and right/left
         Move(moveForward, moveRight);
 
-        // Get player inputs for rotation of character
-        float lookUp = Input.GetAxis("LookUp");
+        // Get player inputs for rotation of character. Vertical rotation managed by PlayerCameraController
         float lookRight = Input.GetAxis("LookRight");
 
         //Rotates the character left and right.
         LookRight(lookRight);
-        LookUp(lookUp);
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -45,7 +42,6 @@ public class PlayerCharacter : CharacterBase
             Shoot();
         }
     }
-
 
     public override void Reload() // Tell the weapon component to reload it's ammunition
     {

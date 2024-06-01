@@ -26,6 +26,7 @@ public class ChaseState : States
     void Chase()
     {
         agent.SetDestination(player.position);
+        
     }
     public override States RunCurrentState()
     {

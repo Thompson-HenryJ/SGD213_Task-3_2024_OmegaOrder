@@ -12,6 +12,7 @@ public abstract class CharacterBase : MonoBehaviour
     [SerializeField]
     public Component [] weapons;
     public float walkSpeed = 10f;
+    public float verticalRotation = 0f;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -44,7 +45,7 @@ public abstract class CharacterBase : MonoBehaviour
 
     public void LookUp(float lookUp) // make character look up or down
     {
-        
+        verticalRotation = lookUp;
     }
 
     public virtual void Reload() // Tell the weapon component to reload it's ammunition

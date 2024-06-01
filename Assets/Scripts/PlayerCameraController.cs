@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCameraController : MonoBehaviour
 {
-
-    public Transform playerCharacter;
+    PlayerCharacter playerCharacter;
     float cameraVerticalRotation = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerCharacter = this.GetComponentInParent<PlayerCharacter>();
         // Hide the cursor and lock it's position
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -20,18 +21,15 @@ public class PlayerCameraController : MonoBehaviour
     void Update()
     {
         //collect mouse input
-        float inputX = Input.GetAxis("LookRight");
-        float inputY = Input.GetAxis("LookUp");
+
+        float lookUp = Input.GetAxis("LookUp");
 
 
         //Rotate the Camera around local XAxis
-        cameraVerticalRotation -= inputY;
+        cameraVerticalRotation -= lookUp;
         cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -90f, 90f);
-        transform.localEulerAngles = Vector3.right * cameraVerticalRotation;
-
-        //Rotate the player obkect and the camera around the YAxis
-
-        playerCharacter.Rotate(Vector3.up * inputX);
+        transform.localEulerAngles = Vector3.right * cameraVerticalRotation; //Vector3.right is rotating around the XAxis
+        playerCharacter.LookUp(this.transform.eulerAngles.x);
 
     }
 }
