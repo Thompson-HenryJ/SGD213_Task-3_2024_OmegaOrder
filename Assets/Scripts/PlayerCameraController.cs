@@ -27,9 +27,9 @@ public class PlayerCameraController : MonoBehaviour
 
         //Rotate the Camera around local XAxis
         cameraVerticalRotation -= lookUp;
-        cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -90f, 90f);
+        cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -90f, 90f);//Limited vertical rotation to +90 and -90
         transform.localEulerAngles = Vector3.right * cameraVerticalRotation; //Vector3.right is rotating around the XAxis
-        playerCharacter.LookUp(this.transform.eulerAngles.x);
+        playerCharacter.verticalRotation = this.transform.eulerAngles.x; //Store the cameras rotation around XAxis on the PlayerCharacter
 
     }
 }

@@ -23,7 +23,7 @@ public class FieldOfView : MonoBehaviour
     {
         //Set playerRef to be playercharacter
         playerRef = GameObject.FindGameObjectWithTag("Player");
-        //Set Coroutine for delay to not call the function every frame (Performance saving)
+        //Start Coroutine for delay to not call the function every frame (Performance saving)
         StartCoroutine(FOVRoutine());
      
     }
@@ -44,34 +44,45 @@ public class FieldOfView : MonoBehaviour
 
     private void FieldOfViewCheck()
     {
+        //sets up collider array to check for overlaps
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
+        //checks if something has come in range
         if(rangeChecks.Length != 0)
         {
+            // checks if overlap is player
             Transform target = rangeChecks[0].transform;
+            // checks direction towards target(Player)
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
+            //checks angle towards target
             if(Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
+                //distance to player is within range
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
+                //does a final check that plaeyr can be seen
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                 {
+                    //player is confirmed so set player to visible
                     canSeePlayer = true;
 
                 }
                 else
                 {
+                    //Can't find player so set player to not visible
                     canSeePlayer = false;
                 }
             }
             else
             {
+                //Player is out of range so set player to not visible
                 canSeePlayer = false;
             }
         }
         else if(canSeePlayer)
         {
+            //Player is no longer visbile so set player to not visible
             canSeePlayer = false;
         }
     }
