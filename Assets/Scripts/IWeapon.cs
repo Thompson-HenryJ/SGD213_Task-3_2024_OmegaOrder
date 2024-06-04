@@ -33,4 +33,6 @@ public interface IWeapon
     float LastFiredTime { get; }
     
     float FireDelay {  get; }
+
+    Vector3 BulletSpawn {  get; }
 }

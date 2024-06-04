@@ -701,7 +701,6 @@ GameObject:
   - component: {fileID: 1631606477}
   - component: {fileID: 1631606476}
   - component: {fileID: 1631606480}
-  - component: {fileID: 1631606478}
   - component: {fileID: 1631606482}
   - component: {fileID: 1631606481}
   m_Layer: 6
@@ -827,14 +826,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!81 &1631606478
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631606470}
-  m_Enabled: 1
 --- !u!114 &1631606480
 MonoBehaviour:
   m_ObjectHideFlags: 0

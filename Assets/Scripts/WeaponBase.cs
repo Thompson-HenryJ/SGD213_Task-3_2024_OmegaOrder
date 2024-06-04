@@ -4,20 +4,6 @@ using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour, IWeapon
 {
-    // Start is called before the first frame update
-    public void Start()
-    {
-        currentAmmo = maxAmmo;
-        currentClip = maxClip;
-        Debug.Log(this.name + ". CurrentAmmo: " + currentAmmo + ". CurrentClip: " + currentClip + ".");
-    }
-
-    // Update is called once per frame
-    public void Update()
-    {
-
-    }
-
     [field: SerializeField] public string weaponName { get; set; }
     public string WeaponName { get { return weaponName; } }
     
@@ -46,6 +32,24 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
 
     [field: SerializeField] public float fireDelay { get; set; }
     public float FireDelay { get { return fireDelay; } }
+
+    public Vector3 bulletSpawn { get; set; }
+    public Vector3 BulletSpawn {  get { return bulletSpawn; } }
+
+    // Start is called before the first frame update
+    public void Start()
+    {
+        currentAmmo = maxAmmo;
+        currentClip = maxClip;
+        Debug.Log(this.name + ". CurrentAmmo: " + currentAmmo + ". CurrentClip: " + currentClip + ".");
+        bulletSpawn = this.transform.position;
+    }
+
+    // Update is called once per frame
+    public void Update()
+    {
+
+    }
 
     // Functionality for firing the weapon
     public virtual void Fire()
