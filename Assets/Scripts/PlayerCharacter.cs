@@ -8,13 +8,18 @@ public class PlayerCharacter : CharacterBase
     public float secondaryWeapon;
     [SerializeField]
     public float jumpSpeed = 100;
-   
+    AmmoDisplay HUD;
+
+
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
         activeWeapon = 1;
+        HUD = (AmmoDisplay)GameObject.Find("AmmoDisplay").GetComponent<AmmoDisplay>();
+        HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo);
+
     }
 
     public void Update()
@@ -77,4 +82,12 @@ public class PlayerCharacter : CharacterBase
     /// }
 
     /// </summary>
+    /// 
+    public override void Shoot()
+    {
+
+        base.Shoot();
+        HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo);
+
+    }
 }

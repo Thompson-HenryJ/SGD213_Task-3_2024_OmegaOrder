@@ -43,6 +43,7 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
         currentClip = maxClip;
         Debug.Log(this.name + ". CurrentAmmo: " + currentAmmo + ". CurrentClip: " + currentClip + ".");
         bulletSpawn = this.transform.position;
+  
     }
 
     // Update is called once per frame

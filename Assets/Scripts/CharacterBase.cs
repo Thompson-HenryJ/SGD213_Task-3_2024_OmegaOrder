@@ -13,6 +13,7 @@ public abstract class CharacterBase : MonoBehaviour
     public Component [] weapons;
     public float walkSpeed = 10f;
     public float verticalRotation = 0f;
+    public WeaponBase primaryWeapon;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -21,6 +22,7 @@ public abstract class CharacterBase : MonoBehaviour
         ourRigidBody = GetComponent<Rigidbody>();
         weapons = GetComponents<WeaponBase>();
         Debug.Log(weapons.Length + " weapons added to " + this);
+        primaryWeapon = (WeaponBase)weapons[activeWeapon];
 
         if (weapons != null)
         {
@@ -60,7 +62,7 @@ public abstract class CharacterBase : MonoBehaviour
     {
         if (weapons != null)
         {
-            WeaponBase primaryWeapon = (WeaponBase)weapons[activeWeapon];
+            primaryWeapon = (WeaponBase)weapons[activeWeapon];
             primaryWeapon.Fire();
         }
         else
