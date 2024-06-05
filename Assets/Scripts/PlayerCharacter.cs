@@ -5,12 +5,11 @@ using UnityEngine;
 public class PlayerCharacter : CharacterBase
 {
 
-    public float secondaryWeapon;
+    public int secondaryWeapon;
     [SerializeField]
     public float jumpSpeed = 100;
     AmmoDisplay HUD;
-
-
+    WeaponBase grenadeLauncher;
 
     // Start is called before the first frame update
     public override void Start()
@@ -19,7 +18,7 @@ public class PlayerCharacter : CharacterBase
         activeWeapon = 1;
         HUD = (AmmoDisplay)GameObject.Find("AmmoDisplay").GetComponent<AmmoDisplay>();
         HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo);
-
+        grenadeLauncher = (WeaponBase)weapons[0];
     }
 
     public void Update()
@@ -46,6 +45,11 @@ public class PlayerCharacter : CharacterBase
         {
             Shoot();
         }
+
+        if (Input.GetButtonDown("Grenade"))
+        {
+            ThrowGrenade();
+        }
     }
 
     public override void Reload() // Tell the weapon component to reload it's ammunition
@@ -58,8 +62,12 @@ public class PlayerCharacter : CharacterBase
 
     public void SwapWeapon()
     {
-    
-        Debug.Log("WeaponSwap(): Active Weapon outside of parameters or not set");
+        int tempWeapon1 = activeWeapon;
+        int tempWeapon2 = secondaryWeapon;
+        activeWeapon = tempWeapon2;
+        secondaryWeapon = tempWeapon1;
+        Debug.Log("Indexes for Primary and Secondary Weapons Swapped");
+        HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo);
         /* Insert anything that happens for the weapon swap... ie. Updating the HUD graphics
          */
     }
@@ -68,11 +76,11 @@ public class PlayerCharacter : CharacterBase
     {
         ourRigidBody.AddForce(0, jumpSpeed, 0, ForceMode.Impulse);
     }
-    ///<summary> 
-    /// public void ThrowGrenade()
-    /// {
 
-    /// }
+    public void ThrowGrenade()
+    {
+        grenadeLauncher.Fire();
+    }
 
 
 

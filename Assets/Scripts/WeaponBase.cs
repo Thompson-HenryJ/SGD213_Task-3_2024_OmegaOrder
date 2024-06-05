@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public abstract class WeaponBase : MonoBehaviour, IWeapon
 {
@@ -50,6 +51,7 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     // Functionality for firing the weapon
     public virtual void Fire()
     {
+        Vector3 spawnPosition;
         float currentTime = Time.time;
         GameObject newbullet;
         CharacterBase characterBase = (CharacterBase)GetComponent<CharacterBase>();
@@ -58,12 +60,14 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
         {
             if (currentClip > 0)
             {
+                spawnPosition = transform.position + transform.forward * 1.5f;
                 float xRot = characterBase.verticalRotation;
                 float yRot = this.transform.eulerAngles.y;
                 float zRot = this.transform.eulerAngles.z;
                 currentAmmo--;
                 currentClip--;
-                newbullet = Instantiate(projectile, transform.position, Quaternion.Euler(xRot, yRot, zRot)); // Add bullet spawn location & direction
+                newbullet = Instantiate(projectile, spawnPosition, Quaternion.Euler(xRot, yRot, zRot)); // Add bullet spawn location & direction
+                Debug.Log(transform.forward);
                 lastFiredTime = Time.time;
 
             }

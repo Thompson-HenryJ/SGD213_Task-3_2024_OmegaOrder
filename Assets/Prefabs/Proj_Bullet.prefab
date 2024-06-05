@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 3997549944416517630}
   - component: {fileID: -2029208713481451570}
   - component: {fileID: 9221968851073304987}
-  m_Layer: 0
+  - component: {fileID: -4780034312505152914}
+  m_Layer: 6
   m_Name: Proj_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,3 +117,17 @@ MonoBehaviour:
   ourRigidBody: {fileID: 0}
   damageRadius: 0
   speed: 10
+  damageAmount: 2
+--- !u!135 &-4780034312505152914
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134493335557051046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
