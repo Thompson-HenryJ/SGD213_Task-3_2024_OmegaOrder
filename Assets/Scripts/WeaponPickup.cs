@@ -4,26 +4,64 @@ using UnityEngine;
 
 class WeaponPickup : PickupBase
 {
-    public object weapon;
-    // bool collectionEnabled = true;
-
-    /// If 'weaponPickup == currentWeapon' then 'collectionEnabled = False' then do nothing and return
-
-    /// If 'weaponPickup != currentWeapon' then 'collectionEnabled = True' then do the following below
-    /// playerCharacter's current weapon = Destroyed
-    /// playerCharacter picks up the new weapon
-    /// Start respawn timer 
-    /// timer = 0 then spawn new weapon
-    /// Play respawnSFX when respawn timer equals 0
-
+    [SerializeField] private string pickupWeaponName;
+    
     protected override void ApplyEffect(GameObject player)
     {
-        // Check if player holds weapon1 or weapon2
 
-        // If weapon1, then do the following
-        // Check if weapon1 == weaponPickup, if true do nothing and return
-        // If false then then change set new weapon as weapon1
+        Debug.Log("ApplyEffect called");
 
-        // If weapon2, do the same but with weapon2
+         CharacterBase characterBase = player.GetComponent<CharacterBase>();
+        if (characterBase == null)
+        {
+            Debug.LogError("Player doesn't have CharacterBase Component");
+            return;
+        }
+        Debug.Log("CharacterBase found");
+
+        WeaponBase currentWeapon = characterBase.primaryWeapon;
+        Debug.Log("Current weapon: " + (currentWeapon != null ? currentWeapon.weaponName : "None"));
+
+        WeaponBase newWeapon = null;
+
+        foreach (Component weaponComponent in characterBase.weapons)
+        {
+            WeaponBase weapon = weaponComponent as WeaponBase;
+            if (weapon != null)
+            {
+                Debug.Log("Checking weapon: " + weapon.weaponName);
+                if (weapon.weaponName == pickupWeaponName)
+                {
+                    newWeapon = weapon;
+                    break;
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Weapon component is not of type WeaponBase");
+            }
+        }
+
+        if (newWeapon == null)
+        {
+            Debug.LogError("Weapon " + pickupWeaponName + " not found on player");
+            return;
+        }
+        Debug.Log("New weapon found: " + newWeapon.weaponName);
+
+        if (currentWeapon != null && currentWeapon.weaponName == newWeapon.weaponName)
+        {
+            Debug.Log("Player already has this weapon. No swap made.");
+            return;
+        }
+
+        characterBase.primaryWeapon = newWeapon;
+        characterBase.activeWeapon = System.Array.IndexOf(characterBase.weapons, newWeapon);
+
+        Debug.Log("Weapon picked up: " + newWeapon.weaponName);
+
+        Destroy(gameObject);
+        
+
     }
 }
