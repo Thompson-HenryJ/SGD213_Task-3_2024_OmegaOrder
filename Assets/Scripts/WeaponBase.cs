@@ -33,17 +33,12 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     [field: SerializeField] public float fireDelay { get; set; }
     public float FireDelay { get { return fireDelay; } }
 
-    public Vector3 bulletSpawn { get; set; }
-    public Vector3 BulletSpawn {  get { return bulletSpawn; } }
-
     // Start is called before the first frame update
     public void Start()
     {
         currentAmmo = maxAmmo;
         currentClip = maxClip;
         Debug.Log(this.name + ". CurrentAmmo: " + currentAmmo + ". CurrentClip: " + currentClip + ".");
-        bulletSpawn = this.transform.position;
-  
     }
 
     // Update is called once per frame
@@ -57,13 +52,18 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     {
         float currentTime = Time.time;
         GameObject newbullet;
+        CharacterBase characterBase = (CharacterBase)GetComponent<CharacterBase>();
+
         if (currentTime - lastFiredTime > fireDelay)
         {
             if (currentClip > 0)
             {
+                float xRot = characterBase.verticalRotation;
+                float yRot = this.transform.eulerAngles.y;
+                float zRot = this.transform.eulerAngles.z;
                 currentAmmo--;
                 currentClip--;
-                newbullet = Instantiate(projectile); // Add bullet spawn location & direction
+                newbullet = Instantiate(projectile, transform.position, Quaternion.Euler(xRot, yRot, zRot)); // Add bullet spawn location & direction
                 lastFiredTime = Time.time;
 
             }

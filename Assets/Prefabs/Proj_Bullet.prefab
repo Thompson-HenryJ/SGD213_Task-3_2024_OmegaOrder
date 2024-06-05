@@ -115,4 +115,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ourRigidBody: {fileID: 0}
   damageRadius: 0
-  speed: 0.1
+  speed: 10
