@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4468369625294477048}
   - component: {fileID: 4468369625294477047}
   - component: {fileID: 4468369625294477046}
-  - component: {fileID: 4468369625294477050}
+  - component: {fileID: -709018386153716656}
   m_Layer: 0
-  m_Name: healthPickup
+  m_Name: ammoPickup
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 1.25, z: 1.25}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4468369625294477050
+--- !u!114 &-709018386153716656
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5669467021300880023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 973513689c6b7454eb61faabe6845716, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bffe3c2b9e7a2844a675124b88c0cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
@@ -115,4 +115,4 @@ MonoBehaviour:
   respawnCD: 5
   respawnSFX: {fileID: 0}
   pickupSFX: {fileID: 0}
-  healAmount: 10
+  ammoAmount: 1

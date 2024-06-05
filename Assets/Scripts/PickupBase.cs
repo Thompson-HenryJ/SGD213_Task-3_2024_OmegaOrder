@@ -15,6 +15,8 @@ public abstract class PickupBase : MonoBehaviour
     
     private BoxCollider ourCollider;
     private MeshRenderer ourMesh;
+
+    GameObject player;
     
     protected virtual void Start()
     {
@@ -32,7 +34,8 @@ public abstract class PickupBase : MonoBehaviour
         if (other.CompareTag("Player"))  // Make sure that it's the player character that's overlapping the object
         {
             // PlayPickupSound();
-            ApplyEffect(other.gameObject);
+            player = other.gameObject;
+            ApplyEffect(player);
             Disable();
             Debug.Log(other.name + "has collided with pickup");
         }
