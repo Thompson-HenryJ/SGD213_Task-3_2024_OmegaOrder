@@ -1366,7 +1366,7 @@ MonoBehaviour:
   <maxAmmo>k__BackingField: 5
   <maxClip>k__BackingField: 5
   <projectile>k__BackingField: {fileID: 2131042462024617993, guid: df6c2aa2a158dc44899881ef098db869, type: 3}
-  <fireDelay>k__BackingField: 10
+  <fireDelay>k__BackingField: 3
 --- !u!1 &1691292923
 GameObject:
   m_ObjectHideFlags: 0

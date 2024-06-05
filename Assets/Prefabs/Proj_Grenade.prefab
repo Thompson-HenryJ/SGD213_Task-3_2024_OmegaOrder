@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3997549944416517630}
   - component: {fileID: -2029208713481451570}
   - component: {fileID: 5472786629409564571}
+  - component: {fileID: 7470693544532223353}
   m_Layer: 0
   m_Name: Proj_Grenade
   m_TagString: Untagged
@@ -94,7 +95,7 @@ Rigidbody:
   m_GameObject: {fileID: 2131042462024617993}
   serializedVersion: 2
   m_Mass: 0.1
-  m_Drag: 0
+  m_Drag: 0.5
   m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -115,4 +116,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ourRigidBody: {fileID: 0}
   damageRadius: 0
-  speed: 5
+  speed: 30
+  damageAmount: 0
+--- !u!135 &7470693544532223353
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131042462024617993}
+  m_Material: {fileID: 13400000, guid: 032f851ea38bda14f9027e6c148f0ea0, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
