@@ -18,7 +18,7 @@ public class PlayerCharacter : CharacterBase
         base.Start();
         activeWeapon = 1;
         HUD = (AmmoDisplay)GameObject.Find("AmmoDisplay").GetComponent<AmmoDisplay>();
-        HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo);
+        HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo, primaryWeapon.currentClip, primaryWeapon.maxClip);
         grenadeLauncher = (WeaponBase)weapons[0];
     }
 
@@ -51,15 +51,15 @@ public class PlayerCharacter : CharacterBase
         {
             ThrowGrenade();
         }
-    }
 
-    public override void Reload() // Tell the weapon component to reload it's ammunition
-    {
-        if (Input.GetButton("Reload")) // | Input.GetButton("ReloadController")
+        if (Input.GetButtonDown("Reload"))
         {
-            Debug.Log("No Weapon Attached");
+            Reload();
+            HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo, primaryWeapon.currentClip, primaryWeapon.maxClip);
         }
     }
+
+   
 
     public void SwapWeapon()
     {
@@ -68,7 +68,7 @@ public class PlayerCharacter : CharacterBase
         activeWeapon = tempWeapon2;
         secondaryWeapon = tempWeapon1;
         Debug.Log("Indexes for Primary and Secondary Weapons Swapped");
-        HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo);
+        HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo, primaryWeapon.currentClip, primaryWeapon.maxClip);
         /* Insert anything that happens for the weapon swap... ie. Updating the HUD graphics
          */
     }
@@ -96,7 +96,7 @@ public class PlayerCharacter : CharacterBase
     {
 
         base.Shoot();
-        HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo);
+        HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo, primaryWeapon.currentClip, primaryWeapon.maxClip);
 
     }
 

@@ -18,4 +18,6 @@ public class EnemyCharacter : CharacterBase
     {
         
     }
+
+    //When adding enemy shoot functionality, if clip runs out of ammo they will need to call the reload function on the weapon
 }

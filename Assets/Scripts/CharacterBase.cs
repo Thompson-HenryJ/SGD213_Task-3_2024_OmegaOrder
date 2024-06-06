@@ -52,9 +52,14 @@ public abstract class CharacterBase : MonoBehaviour
 
     public virtual void Reload() // Tell the weapon component to reload it's ammunition
     {
-        if (Input.GetButton("Reload")) // | Input.GetButton("ReloadController")
+        if (weapons != null)
         {
-            Debug.Log("No Weapon Attached");
+            primaryWeapon = (WeaponBase)weapons[activeWeapon];
+            primaryWeapon.Reload();
+        }
+        else
+        {
+            Debug.Log("No Weapons Attached");
         }
     }
 

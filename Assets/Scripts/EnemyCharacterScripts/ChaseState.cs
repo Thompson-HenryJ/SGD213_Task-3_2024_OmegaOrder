@@ -5,14 +5,14 @@ using UnityEngine.AI;
 
 public class ChaseState : States
 {
-    public Transform player;
+    Transform player;
     private NavMeshAgent agent;
     public AttackState attackState;
     public bool isInAttackRange;
     FieldOfView fov;
     private void Start()
     {
-        player = GameObject.Find("PlayerCharacter").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         fov = GetComponent<FieldOfView>();
     }
@@ -25,6 +25,7 @@ public class ChaseState : States
     }
     void Chase()
     {
+        //Set the characters target location to playercharacters location
         agent.SetDestination(player.position);
         
     }

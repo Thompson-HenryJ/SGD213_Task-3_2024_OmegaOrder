@@ -82,7 +82,7 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     }
 
     // Functionality for increasing the weapons ammunition
-    public virtual void AddAmmo(int AmmoAmount)
+    public void AddAmmo(int AmmoAmount)
     {
         int missingAmmo = maxAmmo - currentAmmo;
         if (missingAmmo > 0)
@@ -104,16 +104,17 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     }
 
     // Functionality for reloading the weapon
-    public virtual void Reload()
+    public void Reload()
     {
-        //check if ammo count is more than 0. If it is reload
-        if (currentAmmo > 0)
+        //check if clip is full
+        if (currentClip == maxClip)
         {
-            Debug.Log("Reloading");
+            Debug.Log("Clip is full");
         }
         //Check if ammoCount is equal to 0. If it is do not reload.
         else if (currentAmmo == 0)
-        {
+        { 
+            //play out of ammo SFX
             Debug.Log("Out Of Ammo");
         }
         //Check if ammoCount is less than 0. If it is set to 0.
@@ -121,6 +122,24 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
         {
             currentAmmo = 0;
             Debug.Log("ammoCount Reset to '0'");
+        }
+        //Checks if current clip contains all remainging ammo
+        else if (currentClip == currentAmmo)
+        {
+            Debug.Log("Clip contains all remainging ammo");
+        }
+        //Checks if ammo count is more than 0 and clip is missing ammo
+        else if (currentAmmo > 0 && currentClip != maxClip)
+        {
+            if (currentAmmo >= maxClip)
+            {
+                currentClip = maxClip;
+            }
+            else
+            {
+                currentClip = currentAmmo;
+            }
+            Debug.Log("reloading");
         }
     }
 }
