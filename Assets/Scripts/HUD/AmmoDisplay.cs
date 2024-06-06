@@ -11,7 +11,7 @@ public class AmmoDisplay : MonoBehaviour
     int maxAmmo;
     int currentClip;
     int maxClip;
-    public TMP_Text clipValue;
+    //public TMP_Text clipValue;
     public TMP_Text ammoValue;
 
     void Start()
@@ -21,8 +21,8 @@ public class AmmoDisplay : MonoBehaviour
 
     private void Update()
     {
-        clipValue.SetText(currentClip.ToString() + "|" + maxClip.ToString());
-        ammoValue.SetText(currentAmmo.ToString() + "|" + maxAmmo.ToString());
+        //clipValue.SetText(currentClip.ToString() + "|" + maxClip.ToString());
+        ammoValue.SetText("<align=\"center\">" + currentClip.ToString() + "|" + maxClip.ToString() + "\n" + currentAmmo.ToString() + "|" + maxAmmo.ToString() + "</align>");
         
     }
 
