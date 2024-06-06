@@ -15,7 +15,7 @@ public abstract class ProjectileBase : MonoBehaviour
     public virtual void Start()
     {
         ourRigidBody = GetComponent<Rigidbody>();
-        Debug.Log("Bullet Spawned - Forward: " + ourRigidBody.transform.forward);
+        // Debug.Log("Bullet Spawned - Forward: " + ourRigidBody.transform.forward);
     }
 
     // Update is called once per frame
@@ -27,10 +27,10 @@ public abstract class ProjectileBase : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        Debug.Log (other);
+        // Debug.Log (other);
         if (other.GetComponent<IHealth>() != null)
         {
-            Debug.Log("TakeDamage");
+            // Debug.Log("TakeDamage");
             other.GetComponent<IHealth>().TakeDamage(damageAmount);
         }
         else

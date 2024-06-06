@@ -67,7 +67,6 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
                 currentAmmo--;
                 currentClip--;
                 newbullet = Instantiate(projectile, spawnPosition, Quaternion.Euler(xRot, yRot, zRot)); // Add bullet spawn location & direction
-                Debug.Log(transform.forward);
                 lastFiredTime = Time.time;
 
             }

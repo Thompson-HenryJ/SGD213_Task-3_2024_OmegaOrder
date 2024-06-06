@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCharacter : CharacterBase
 {
@@ -8,8 +9,8 @@ public class PlayerCharacter : CharacterBase
     public int secondaryWeapon;
     [SerializeField]
     public float jumpSpeed = 100;
-    AmmoDisplay HUD;
-    WeaponBase grenadeLauncher;
+    private AmmoDisplay HUD;
+    public WeaponBase grenadeLauncher;
 
     // Start is called before the first frame update
     public override void Start()
@@ -97,5 +98,16 @@ public class PlayerCharacter : CharacterBase
         base.Shoot();
         HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo);
 
+    }
+
+    public void Restart()
+    {
+        StartCoroutine(ReloadScene());
+    }
+
+    public IEnumerator ReloadScene()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

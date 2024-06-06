@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Health : MonoBehaviour, IHealth
 {
@@ -48,9 +49,7 @@ public class Health : MonoBehaviour, IHealth
     protected float destroyDelay;
     public float DestroyDelay { get { return destroyDelay; } }
 
-
-   
-
+    
     // Reduces X amount of health from object 
     public void TakeDamage(float damageAmount)
     {
@@ -113,20 +112,34 @@ public class Health : MonoBehaviour, IHealth
         {
             
             currentHealth = maxHealth;
-            Debug.Log(currentHealth);
+            // Debug.Log(currentHealth);
         }
         else
         {
             
             currentHealth = currentHealth + healAmount;
-            Debug.Log(currentHealth);
+            // Debug.Log(currentHealth);
         }
     }
 
     // What happens when the objects health equals zero
     public void Death()
     {
-
+        // play deathSFX
+        if (GetComponent<PlayerCharacter>() != null) // if this is the player character
+        {
+            Time.timeScale = 0; // Stop the game from running
+            PlayerCharacter playerRef = (PlayerCharacter)GetComponent<PlayerCharacter>();
+            playerRef.Restart();
+        }
+        else
+        {
+            // else set Enemy State to Dead
+            this.GetComponent<Collider>().enabled = false;// disable the collider so the enemy stops interacting with other objects
+            Destroy(GetComponent<Rigidbody>());
+            // Add in any death effects here
+            Destroy(gameObject, 2);
+        }
     }
 
     // Starts shield recharge cycle
