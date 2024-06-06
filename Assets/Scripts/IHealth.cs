@@ -58,7 +58,4 @@ public interface IHealth
 
    // Stops the shields recharge cycle
    void StopRecharge();
-
-   // When the current shield amount reaches zero
-   void ShieldDepleted();
 }

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Health : MonoBehaviour, IHealth
 {
     // The amount of health the object currently has 
-    [SerializeField] protected float currentHealth;
+    public float currentHealth;
     public float CurrentHealth { get { return currentHealth; } }
 
     // The max health the object can have 
@@ -14,7 +14,7 @@ public class Health : MonoBehaviour, IHealth
     public float MaxHealth { get { return maxHealth; } }
 
     // The amount of shield the object currently has 
-    protected float currentShield;
+    public float currentShield;
     public float CurrentShield { get { return currentShield; } }
 
     // The max amount of shield the object can have
@@ -49,49 +49,48 @@ public class Health : MonoBehaviour, IHealth
     protected float destroyDelay;
     public float DestroyDelay { get { return destroyDelay; } }
 
-    
+    private IEnumerator startShieldDelay;
+    private IEnumerator startShieldPulse;
+
     // Reduces X amount of health from object 
     public void TakeDamage(float damageAmount)
     {
-        // Check the maxShield is greater than zero
-        
+        // Check if the character has a shield (ie maxShield is greater than zero)
         if (maxShield > 0)
         {
+            Debug.Log("Enemy hit by bullet - has shield.");
             // Recording the last time the object took damage
             damageTime = Time.time;
-
-            StopRecharge();
-
+            // StopRecharge();
             if (damageAmount > currentShield) // Is the damageAmount more than the currentShield
             {
-                // Subtract damageamount from currentshield and remaining from currentHealth
+                // Reduce health by the amount of damage the shield doesn't absorb and then set the shield to 0.
                 currentHealth = damageAmount - currentShield;
                 currentShield = 0;
-
-                if (currentHealth <= 0) // If it kills the object
+                Debug.Log("Enemy hit by bullet - damage amount is greater than current shield.");
+                if (currentHealth <= 0) // If it kills the character
                 {
                     Death();
                 }
                 else
                 {
-                    // Play shieldDepletedSFX
-                    
-                    StartRecharge();
+                    // Play ShieldDepletedSFX
                 }
-      
+
             }
             else
             {
                 currentShield = currentShield - damageAmount;
                 // Play hurtSFX
-                StartRecharge();
+                Debug.Log("Enemy hit by bullet - damage amount is less than current shield.");
             }
+            StartRecharge();
         }
         else
         {
-            currentHealth = currentHealth - damageAmount;
+            currentHealth = currentShield - damageAmount; // Reduce health by damage amount
 
-            if(currentHealth <= 0)
+            if (currentHealth <= 0) // If it kills the character
             {
                 Death();
             }
@@ -103,20 +102,61 @@ public class Health : MonoBehaviour, IHealth
 
     }
 
+    public void StartRecharge()
+    {
+        startShieldDelay = ShieldDelay(rechargeDelay);
+        StartCoroutine(startShieldDelay);
+    }
+
+    public void StopRecharge()
+    {
+        StopCoroutine(startShieldDelay);
+        StopCoroutine(startShieldPulse);
+    }
+
+    private IEnumerator ShieldDelay(float shieldDelay)
+    {
+        yield return new WaitForSeconds(shieldDelay);
+        startShieldPulse = ShieldPulser(rechargeInterval);
+        StartCoroutine(startShieldPulse);
+    }
+
+    private IEnumerator ShieldPulser(float shieldPulseTime)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(shieldPulseTime);
+            if (currentShield >= maxShield)
+            {
+                currentShield = maxShield;
+                StopCoroutine(startShieldPulse);
+            }
+            else if (maxShield - currentShield > rechargeAmount)
+            {
+                currentShield = maxShield;
+                StopCoroutine(startShieldPulse);
+            }
+            else
+            {
+                currentShield += rechargeAmount;
+            }
+        }
+    }
+
     // Increases health of current object
     public void Heal(float healAmount)
     {
         Debug.Log("Heal function called");
 
-        if(maxHealth - currentHealth < healAmount)
+        if (maxHealth - currentHealth < healAmount)
         {
-            
+
             currentHealth = maxHealth;
             // Debug.Log(currentHealth);
         }
         else
         {
-            
+
             currentHealth = currentHealth + healAmount;
             // Debug.Log(currentHealth);
         }
@@ -141,33 +181,4 @@ public class Health : MonoBehaviour, IHealth
             Destroy(gameObject, 2);
         }
     }
-
-    // Starts shield recharge cycle
-    public void StartRecharge()
-    {
-        shieldPulseTime = damageTime;
-
-        if(Time.time - rechargeDelay > damageTime)
-        {
-            
-        }
-        else
-        {
-
-        }
-
-    }
-
-    // Stops the shields recharge cycle
-    public void StopRecharge()
-    {
-
-    }
-
-    // When the current shield amount reaches zero
-    public void ShieldDepleted()
-    {
-
-    }
 }
-
