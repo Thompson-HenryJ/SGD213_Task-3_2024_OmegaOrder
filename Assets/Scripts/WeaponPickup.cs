@@ -6,7 +6,7 @@ using UnityEngine;
 
 class WeaponPickup : PickupBase
 {
-    [SerializeField] component pickupWeaponName;
+    [SerializeField] Component pickupWeaponName;
     
     protected override void ApplyEffect(GameObject player)
     {
@@ -24,7 +24,7 @@ class WeaponPickup : PickupBase
         /// </summary>
 
 
-        Debug.Log("ApplyEffect called");
+       /* Debug.Log("ApplyEffect called");
 
         CharacterBase characterBase = player.GetComponent<CharacterBase>();
         if (characterBase == null)
@@ -52,7 +52,7 @@ class WeaponPickup : PickupBase
             if (weapon != null)
             {
                 Debug.Log("Weapon on player: " + weapon.weaponName);
-                if (weapon.weaponName == pickupWeaponName)
+                if (weapon.weaponName = pickupWeaponName)
                 {
                     newWeapon = weapon;
                     break;
@@ -83,7 +83,8 @@ class WeaponPickup : PickupBase
         Debug.Log("Weapon picked up: " + newWeapon.weaponName);
 
         Destroy(gameObject);
-        
+
+        */        
 
     }
 }
