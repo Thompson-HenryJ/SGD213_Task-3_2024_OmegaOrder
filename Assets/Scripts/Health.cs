@@ -61,11 +61,11 @@ public class Health : MonoBehaviour, IHealth
             Debug.Log("Enemy hit by bullet - has shield.");
             // Recording the last time the object took damage
             damageTime = Time.time;
-            // StopRecharge();
+            CancelInvoke();
             if (damageAmount > currentShield) // Is the damageAmount more than the currentShield
             {
                 // Reduce health by the amount of damage the shield doesn't absorb and then set the shield to 0.
-                currentHealth = damageAmount - currentShield;
+                currentHealth = currentHealth - (damageAmount - currentShield);
                 currentShield = 0;
                 Debug.Log("Enemy hit by bullet - damage amount is greater than current shield.");
                 if (currentHealth <= 0) // If it kills the character
@@ -84,11 +84,11 @@ public class Health : MonoBehaviour, IHealth
                 // Play hurtSFX
                 Debug.Log("Enemy hit by bullet - damage amount is less than current shield.");
             }
-            StartRecharge();
+            InvokeRepeating("ShieldPulser", rechargeDelay, rechargeInterval); ;
         }
         else
         {
-            currentHealth = currentShield - damageAmount; // Reduce health by damage amount
+            currentHealth = currentHealth - damageAmount; // Reduce health by damage amount
 
             if (currentHealth <= 0) // If it kills the character
             {
@@ -102,44 +102,21 @@ public class Health : MonoBehaviour, IHealth
 
     }
 
-    public void StartRecharge()
+    private void ShieldPulser()
     {
-        startShieldDelay = ShieldDelay(rechargeDelay);
-        StartCoroutine(startShieldDelay);
-    }
-
-    public void StopRecharge()
-    {
-        StopCoroutine(startShieldDelay);
-        StopCoroutine(startShieldPulse);
-    }
-
-    private IEnumerator ShieldDelay(float shieldDelay)
-    {
-        yield return new WaitForSeconds(shieldDelay);
-        startShieldPulse = ShieldPulser(rechargeInterval);
-        StartCoroutine(startShieldPulse);
-    }
-
-    private IEnumerator ShieldPulser(float shieldPulseTime)
-    {
-        while (true)
+        if (currentShield >= maxShield)
         {
-            yield return new WaitForSeconds(shieldPulseTime);
-            if (currentShield >= maxShield)
-            {
-                currentShield = maxShield;
-                StopCoroutine(startShieldPulse);
-            }
-            else if (maxShield - currentShield > rechargeAmount)
-            {
-                currentShield = maxShield;
-                StopCoroutine(startShieldPulse);
-            }
-            else
-            {
-                currentShield += rechargeAmount;
-            }
+            currentShield = maxShield;
+            CancelInvoke();
+        }
+        else if ((maxShield - currentShield) <= rechargeAmount)
+        {
+            currentShield = maxShield;
+            CancelInvoke();
+        }
+        else
+        {
+            currentShield += rechargeAmount;
         }
     }
 

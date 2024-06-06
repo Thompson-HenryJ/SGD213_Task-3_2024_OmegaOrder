@@ -416,6 +416,42 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1061389601, guid: 0c0f640ad53497c43b99aa7aba6bdc26, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061389601, guid: 0c0f640ad53497c43b99aa7aba6bdc26, type: 3}
+      propertyPath: maxShield
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061389601, guid: 0c0f640ad53497c43b99aa7aba6bdc26, type: 3}
+      propertyPath: currentHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061389601, guid: 0c0f640ad53497c43b99aa7aba6bdc26, type: 3}
+      propertyPath: currentShield
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061389601, guid: 0c0f640ad53497c43b99aa7aba6bdc26, type: 3}
+      propertyPath: rechargeDelay
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061389601, guid: 0c0f640ad53497c43b99aa7aba6bdc26, type: 3}
+      propertyPath: rechargeAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061389601, guid: 0c0f640ad53497c43b99aa7aba6bdc26, type: 3}
+      propertyPath: rechargeInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061389601, guid: 0c0f640ad53497c43b99aa7aba6bdc26, type: 3}
+      propertyPath: <currentHealth>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061389601, guid: 0c0f640ad53497c43b99aa7aba6bdc26, type: 3}
+      propertyPath: <currentShield>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1061389604, guid: 0c0f640ad53497c43b99aa7aba6bdc26, type: 3}
       propertyPath: player
       value: 
@@ -712,8 +748,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a845e4cac181dc04a915bcb838430eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 5
-  maxHealth: 5
+  currentHealth: 0
+  maxHealth: 0
+  currentShield: 0
   maxShield: 0
   rechargeDelay: 0
   rechargeInterval: 0

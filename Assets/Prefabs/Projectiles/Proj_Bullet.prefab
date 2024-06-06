@@ -117,7 +117,7 @@ MonoBehaviour:
   ourRigidBody: {fileID: 0}
   damageRadius: 0
   speed: 10
-  damageAmount: 2
+  damageAmount: 5
 --- !u!135 &-4780034312505152914
 SphereCollider:
   m_ObjectHideFlags: 0

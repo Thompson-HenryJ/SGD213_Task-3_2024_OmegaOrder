@@ -42,8 +42,6 @@ public interface IHealth
    float DestroyDelay { get; }
 
 
-
-
    // Reduces X amount of health from object 
    void TakeDamage(float damageAmount);
 
@@ -52,10 +50,4 @@ public interface IHealth
 
    // What happens when the objects health equals zero
    void Death();
-
-   // Starts shield recharge cycle
-   void StartRecharge();
-
-   // Stops the shields recharge cycle
-   void StopRecharge();
 }
