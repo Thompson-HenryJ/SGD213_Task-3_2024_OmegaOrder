@@ -60,8 +60,8 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
             }
             else if (currentClip == 0) // if the clip is out of ammo
             {
-                // play out of ammo sfx;
-                Debug.Log(this.weaponName + "has no ammo in the clip and didn't fire.")
+                // play out of ammo sfx
+                Debug.Log(this.weaponName + "has no ammo in the clip and didn't fire.");
             }
             else
             {
