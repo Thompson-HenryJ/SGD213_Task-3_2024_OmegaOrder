@@ -17,9 +17,10 @@ public class PlayerCharacter : CharacterBase
     {
         base.Start();
         activeWeapon = 1;
-        HUD = (AmmoDisplay)GameObject.Find("AmmoDisplay").GetComponent<AmmoDisplay>();
-        HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo, primaryWeapon.currentClip, primaryWeapon.maxClip);
-        grenadeLauncher = (WeaponBase)weapons[0];
+        secondaryWeapon = 1;
+        HUD = (AmmoDisplay)GameObject.Find("AmmoDisplay").GetComponent<AmmoDisplay>(); // Set a reference to the ammo display on the HUD Canvas.
+        UpdateHUDAmmo();  // Update
+        grenadeLauncher = (WeaponBase)weapons[0]; // Set the grenade to be the first WeaponBase component attached to the character.
     }
 
     public void Update()
@@ -55,7 +56,17 @@ public class PlayerCharacter : CharacterBase
         if (Input.GetButtonDown("Reload"))
         {
             Reload();
-            HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo, primaryWeapon.currentClip, primaryWeapon.maxClip);
+            UpdateHUDAmmo();
+        }
+
+        if (Input.GetButtonDown("SwapWeapons"))
+        {
+            SwapWeapon();
+        }
+        
+        if (Input.GetButtonDown("Restart"))
+        {
+            Restart();
         }
     }
 
@@ -63,14 +74,23 @@ public class PlayerCharacter : CharacterBase
 
     public void SwapWeapon()
     {
-        int tempWeapon1 = activeWeapon;
-        int tempWeapon2 = secondaryWeapon;
-        activeWeapon = tempWeapon2;
-        secondaryWeapon = tempWeapon1;
-        Debug.Log("Indexes for Primary and Secondary Weapons Swapped");
-        HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo, primaryWeapon.currentClip, primaryWeapon.maxClip);
-        /* Insert anything that happens for the weapon swap... ie. Updating the HUD graphics
-         */
+        if (weapons.Length > 2)
+        {
+            Debug.Log(activeWeapon + " / " + secondaryWeapon);
+            int tempWeapon1 = activeWeapon;
+            int tempWeapon2 = secondaryWeapon;
+            activeWeapon = tempWeapon2;
+            secondaryWeapon = tempWeapon1;
+            Debug.Log(activeWeapon + " / " + secondaryWeapon);
+            primaryWeapon = (WeaponBase)weapons[activeWeapon]; // Equip the new active weapon in the primary slot
+
+        }
+        else
+        {
+            Debug.Log("No secondary weapon equipped.");
+        }
+        UpdateHUDAmmo();
+        /* Insert anything that happens for the weapon swap... ie. Updating the HUD graphics */
     }
 
     public void Jump()
@@ -83,21 +103,10 @@ public class PlayerCharacter : CharacterBase
         grenadeLauncher.Fire();
     }
 
-
-
-    /// public void Crouch()
-    /// {
-
-    /// }
-
-    /// </summary>
-    /// 
     public override void Shoot()
     {
-
         base.Shoot();
-        HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo, primaryWeapon.currentClip, primaryWeapon.maxClip);
-
+        UpdateHUDAmmo();
     }
 
     public void Restart()
@@ -109,5 +118,10 @@ public class PlayerCharacter : CharacterBase
     {
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void UpdateHUDAmmo()
+    {
+        HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo, primaryWeapon.currentClip, primaryWeapon.maxClip);
     }
 }
