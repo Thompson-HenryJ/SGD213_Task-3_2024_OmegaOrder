@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public abstract class CharacterBase : MonoBehaviour
 {
@@ -20,8 +21,7 @@ public abstract class CharacterBase : MonoBehaviour
     {
         // Populate ourRigidBody
         ourRigidBody = GetComponent<Rigidbody>();
-        weapons = GetComponents<WeaponBase>();
-        Debug.Log(weapons.Length + " weapons added to " + this);
+        RegisterWeapons();
         primaryWeapon = (WeaponBase)weapons[activeWeapon];
 
         if (weapons != null)
@@ -73,6 +73,24 @@ public abstract class CharacterBase : MonoBehaviour
         else
         {
             Debug.Log("No Weapons Attached");
+        }
+    }
+
+    public virtual void RegisterWeapons()
+    {
+        Array.Clear(weapons, 0, weapons.Length);
+        weapons = GetComponents<WeaponBase>();
+        // Debug.Log(weapons.Length + " weapons added to " + this);
+    }
+
+    public virtual bool WeaponCheck(/*Component weaponToCheck*/)
+    {
+        if (1==1/*weapons array contains weaponToCheck*/) {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

@@ -39,7 +39,7 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     {
         currentAmmo = maxAmmo;
         currentClip = maxClip;
-        Debug.Log(this.name + ". CurrentAmmo: " + currentAmmo + ". CurrentClip: " + currentClip + ".");
+        // Debug.Log(this.name + ". CurrentAmmo: " + currentAmmo + ". CurrentClip: " + currentClip + ".");
     }
 
     // Update is called once per frame

@@ -38,7 +38,7 @@ Transform:
   m_Children:
   - {fileID: 8093413651695551272}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8093413650389096729
 MeshFilter:
@@ -141,6 +141,7 @@ MonoBehaviour:
   primaryWeapon: {fileID: 0}
   secondaryWeapon: 0
   jumpSpeed: 5
+  grenadeLauncher: {fileID: 0}
 --- !u!114 &8093413650389096707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 80
   maxHealth: 100
+  currentShield: 0
   maxShield: 0
   rechargeDelay: 0
   rechargeInterval: 0

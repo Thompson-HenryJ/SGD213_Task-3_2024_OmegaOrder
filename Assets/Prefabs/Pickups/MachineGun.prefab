@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 4468369625294477047}
   - component: {fileID: 4468369625294477046}
   - component: {fileID: 3485395560315927487}
+  - component: {fileID: 5746527182072420460}
   m_Layer: 0
-  m_Name: weaponPickup
+  m_Name: MachineGun
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -115,4 +116,20 @@ MonoBehaviour:
   respawnCD: 20
   respawnSFX: {fileID: 0}
   pickupSFX: {fileID: 0}
-  pickupWeaponName: MachineGun
+--- !u!114 &5746527182072420460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5669467021300880023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fed2ea959c5b64f8e2505ecff5c776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <weaponName>k__BackingField: 
+  <maxAmmo>k__BackingField: 0
+  <maxClip>k__BackingField: 0
+  <projectile>k__BackingField: {fileID: 0}
+  <fireDelay>k__BackingField: 0
