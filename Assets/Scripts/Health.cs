@@ -52,6 +52,15 @@ public class Health : MonoBehaviour, IHealth
     private IEnumerator startShieldDelay;
     private IEnumerator startShieldPulse;
 
+    public void Start()
+    {
+        rechargeAmount = 1f;
+        rechargeInterval = 0.5f;
+        rechargeDelay = 3f;
+        InvokeRepeating("ShieldPulser", rechargeDelay, rechargeInterval); ;
+
+    }
+
     // Reduces X amount of health from object 
     public void TakeDamage(float damageAmount)
     {
