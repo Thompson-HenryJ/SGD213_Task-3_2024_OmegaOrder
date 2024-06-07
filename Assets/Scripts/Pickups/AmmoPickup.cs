@@ -19,6 +19,8 @@ class AmmoPickup : PickupBase
         primaryWeapon = (WeaponBase)ourCharacterBase.weapons[activeWeapon]; // Finding the weapon base component stored in the array
 
         primaryWeapon.AddAmmo(ammoAmount); // Telling that component to increase the ammo count
+        PlayerCharacter playerRef = (PlayerCharacter)player.GetComponent<PlayerCharacter>(); // Reference to player character component on player object
+        playerRef.UpdateHUDAmmo(); // Calls the HUD ammo update function 
 
     }
 }

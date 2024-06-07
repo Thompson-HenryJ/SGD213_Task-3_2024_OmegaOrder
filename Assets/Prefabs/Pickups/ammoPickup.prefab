@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4468369625294477047}
   - component: {fileID: 4468369625294477046}
   - component: {fileID: -709018386153716656}
+  - component: {fileID: 6063009000695491050}
   m_Layer: 0
   m_Name: ammoPickup
   m_TagString: Untagged
@@ -116,3 +117,16 @@ MonoBehaviour:
   respawnSFX: {fileID: 0}
   pickupSFX: {fileID: 0}
   ammoAmount: 1
+--- !u!114 &6063009000695491050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5669467021300880023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f92dd39f567fece449c9b8a1f1778ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 30

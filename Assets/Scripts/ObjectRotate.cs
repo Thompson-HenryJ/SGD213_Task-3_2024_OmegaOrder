@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ObjectRotate : MonoBehaviour
 {
-   public float rotationSpeed = 30f;
+   public float rotationSpeed = 30f; // Rotation speed of the game object
 
-    void Update()
+    void Update() // Called once per frame
     {
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime); // Object rotation on the y axis
     }
 }
