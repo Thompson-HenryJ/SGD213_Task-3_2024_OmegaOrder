@@ -5,15 +5,15 @@ using UnityEngine;
 public abstract class ProjectileBase : MonoBehaviour
 {
     public Rigidbody ourRigidBody;
-    [field: SerializeField] float damageRadius;
     [field: SerializeField] public float speed;
-    [field: SerializeField] float damageAmount;
-
+    [field: SerializeField] public float damageAmount;
+    private SphereCollider collider;
 
 
     // Start is called before the first frame update
     public virtual void Start()
     {
+        collider = GetComponent<SphereCollider>();
         ourRigidBody = GetComponent<Rigidbody>();
         // Debug.Log("Bullet Spawned - Forward: " + ourRigidBody.transform.forward);
     }

@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &-3728978519578146596
 MeshFilter:
@@ -115,9 +115,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ourRigidBody: {fileID: 0}
-  damageRadius: 0
+  damageRadius: 5
   speed: 30
-  damageAmount: 0
+  damageAmount: 50
+  collider: {fileID: 0}
+  timer: 3
 --- !u!135 &7470693544532223353
 SphereCollider:
   m_ObjectHideFlags: 0
