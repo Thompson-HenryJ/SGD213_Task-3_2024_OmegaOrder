@@ -77,12 +77,10 @@ public class PlayerCharacter : CharacterBase
     {
         if (weapons.Length > 2)
         {
-            Debug.Log(activeWeapon + " / " + secondaryWeapon);
             int tempWeapon1 = activeWeapon;
             int tempWeapon2 = secondaryWeapon;
             activeWeapon = tempWeapon2;
             secondaryWeapon = tempWeapon1;
-            Debug.Log(activeWeapon + " / " + secondaryWeapon);
             primaryWeapon = (WeaponBase)weapons[activeWeapon]; // Equip the new active weapon in the primary slot
 
         }
@@ -97,9 +95,9 @@ public class PlayerCharacter : CharacterBase
     public void Jump()
     {
 
-        if (ourRigidBody.velocity.y == 0f)
+        if (ourRigidBody.velocity.y == 0f) // if the character is not moving vertically
         {
-            ourRigidBody.AddForce(0, jumpSpeed, 0, ForceMode.Impulse);
+            ourRigidBody.AddForce(0, jumpSpeed, 0, ForceMode.Impulse); // propel them upwards
         }
     }
 
@@ -110,22 +108,22 @@ public class PlayerCharacter : CharacterBase
 
     public override void Shoot()
     {
-        base.Shoot();
+        base.Shoot(); // all of the functionality in CharacterBase.Shoot()
         UpdateHUDAmmo();
     }
 
     public void Restart()
     {
-        StartCoroutine(ReloadScene());
+        StartCoroutine(ReloadScene()); // start the countdown to reload the scene
     }
 
-    public IEnumerator ReloadScene()
+    public IEnumerator ReloadScene() // reloads the scene after 3 seconds
     {
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void UpdateHUDAmmo()
+    public void UpdateHUDAmmo() // update the displayed ammo count
     {
         HUD.UpdateAmmo(primaryWeapon.currentAmmo, primaryWeapon.maxAmmo, primaryWeapon.currentClip, primaryWeapon.maxClip);
     }

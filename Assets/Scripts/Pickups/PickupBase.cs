@@ -24,7 +24,7 @@ public abstract class PickupBase : MonoBehaviour
         ourMesh = GetComponent<MeshRenderer>();
         if (spawnOnStart != true)
         {
-            Disable();
+            Disable(); 
             StartRespawnTimer();
         } 
     }
@@ -88,7 +88,7 @@ public abstract class PickupBase : MonoBehaviour
         StartCoroutine(respawnTimer);
     }
 
-    public virtual void Respawn()
+    public virtual void Respawn() // Enable the pickup by turning on overlap events and making it visible again
     {
         if (respawnSFX != null)
         {

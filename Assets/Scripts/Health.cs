@@ -70,7 +70,7 @@ public class Health : MonoBehaviour, IHealth
             Debug.Log("Enemy hit by bullet - has shield.");
             // Recording the last time the object took damage
             damageTime = Time.time;
-            CancelInvoke();
+            CancelInvoke();  // stop all existing shield regen
             if (damageAmount > currentShield) // Is the damageAmount more than the currentShield
             {
                 // Reduce health by the amount of damage the shield doesn't absorb and then set the shield to 0.
@@ -113,17 +113,17 @@ public class Health : MonoBehaviour, IHealth
 
     private void ShieldPulser()
     {
-        if (currentShield >= maxShield)
+        if (currentShield >= maxShield) // if the current shield is already greater than the maximum shield, set it back to maximum shield and cancel the shield regen
         {
             currentShield = maxShield;
             CancelInvoke();
         }
-        else if ((maxShield - currentShield) <= rechargeAmount)
+        else if ((maxShield - currentShield) <= rechargeAmount) // if the shield regen would take it over the maximum shield amount, set it to maximum shield amount and cancel the shield regen
         {
             currentShield = maxShield;
             CancelInvoke();
         }
-        else
+        else // otherwise just add the regen amount to the current shield amount
         {
             currentShield += rechargeAmount;
         }
@@ -134,17 +134,15 @@ public class Health : MonoBehaviour, IHealth
     {
         Debug.Log("Heal function called");
 
-        if (maxHealth - currentHealth < healAmount)
+        if (maxHealth - currentHealth < healAmount) // if the heal would take the character above max health, set it to max health
         {
 
             currentHealth = maxHealth;
-            // Debug.Log(currentHealth);
         }
-        else
+        else // otherwise add the heal amount to the current health
         {
 
             currentHealth = currentHealth + healAmount;
-            // Debug.Log(currentHealth);
         }
     }
 
@@ -156,15 +154,14 @@ public class Health : MonoBehaviour, IHealth
         {
             Time.timeScale = 0; // Stop the game from running
             PlayerCharacter playerRef = (PlayerCharacter)GetComponent<PlayerCharacter>();
-            playerRef.Restart();
+            playerRef.Restart(); // start the timer to reload the scene
         }
         else
         {
-            // else set Enemy State to Dead
             this.GetComponent<Collider>().enabled = false;// disable the collider so the enemy stops interacting with other objects
-            Destroy(GetComponent<Rigidbody>());
+            Destroy(GetComponent<Rigidbody>()); // disable the rigidbody to stop any other forces acting on it
             // Add in any death effects here
-            Destroy(gameObject, 2);
+            Destroy(gameObject, 2); // destroy the object after 2 seconds
         }
     }
 }

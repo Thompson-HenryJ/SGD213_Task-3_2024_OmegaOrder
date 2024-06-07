@@ -78,8 +78,7 @@ public abstract class CharacterBase : MonoBehaviour
 
     public virtual void RegisterWeapons()
     {
-        Array.Clear(weapons, 0, weapons.Length);
-        weapons = GetComponents<WeaponBase>();
-        // Debug.Log(weapons.Length + " weapons added to " + this);
+        Array.Clear(weapons, 0, weapons.Length); // clear the register of all weapons
+        weapons = GetComponents<WeaponBase>(); // register all weapons currently on the character
     }
 }

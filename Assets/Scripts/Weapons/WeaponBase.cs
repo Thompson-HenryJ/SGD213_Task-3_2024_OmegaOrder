@@ -44,23 +44,24 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
         GameObject newbullet;
         CharacterBase characterBase = (CharacterBase)GetComponent<CharacterBase>();
 
-        if (currentTime - lastFiredTime > fireDelay)
+        if (currentTime - lastFiredTime > fireDelay) // make sure enough time has elapsed since the last shot before shooting again
         {
-            if (currentClip > 0)
+            if (currentClip > 0) // make sure the clip has ammo
             {
-                spawnPosition = transform.position + transform.forward * 1.5f;
-                float xRot = characterBase.verticalRotation;
-                float yRot = this.transform.eulerAngles.y;
-                float zRot = this.transform.eulerAngles.z;
-                currentAmmo--;
-                currentClip--;
-                newbullet = Instantiate(projectile, spawnPosition, Quaternion.Euler(xRot, yRot, zRot)); // Add bullet spawn location & direction
-                lastFiredTime = Time.time;
+                spawnPosition = transform.position + transform.forward * 1.5f; // set a point in front of the character so it's not shooting itself
+                float xRot = characterBase.verticalRotation; // use the value stored here instead of the object rotation because the gameobject doesn't rotate when looking up and down
+                float yRot = this.transform.eulerAngles.y; // rotation of the game object looking left and right
+                float zRot = this.transform.eulerAngles.z; // should be 0 because the characters don't lean left and right
+                currentAmmo--; // reduce the total held ammo by 1
+                currentClip--; // reduce the ammo in the clip by 1
+                newbullet = Instantiate(projectile, spawnPosition, Quaternion.Euler(xRot, yRot, zRot)); // Spawn a bullet
+                lastFiredTime = Time.time; // set the last time the bullet was fired to right now
 
             }
-            else if (currentClip == 0)
+            else if (currentClip == 0) // if the clip is out of ammo
             {
                 // play out of ammo sfx;
+                Debug.Log(this.weaponName + "has no ammo in the clip and didn't fire.")
             }
             else
             {

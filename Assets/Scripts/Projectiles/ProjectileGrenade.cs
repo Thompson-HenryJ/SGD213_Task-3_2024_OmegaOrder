@@ -11,38 +11,37 @@ public class ProjectileGrenade : ProjectileBase
 
     public override void Start()
     {
-        base.Start();
-        ourRigidBody.AddForce(transform.forward * speed);
-        Invoke("Detonate", timer);
+        base.Start(); // run everything in ProjectileBase.Start() first
+        ourRigidBody.AddForce(transform.forward * speed); // throw the grenade
+        Invoke("Detonate", timer); // start the cooldown timer for the grenade
     }
 
-    public override void Update()
+    public override void Update() // overriden so the grenade doesn't travel forward in a straight line
     {
         
     }
 
-    protected override void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other) // overriden as this is a timed grenade and doesn't explode on impact
     {
         
     }
 
-    protected void Detonate()
+    protected void Detonate() 
     {
         int maxColliders = 10;
-        Collider[] hitColliders = new Collider[maxColliders];
-        int numColliders = Physics.OverlapSphereNonAlloc(transform.position, damageRadius, hitColliders);
+        Collider[] hitColliders = new Collider[maxColliders]; 
+        int numColliders = Physics.OverlapSphereNonAlloc(transform.position, damageRadius, hitColliders); // get up to 10 nearby objects within range
         for (int i = 0; i < numColliders; i++)
         {
-            if (hitColliders[i].GetComponent<IHealth>() != null)
+            if (hitColliders[i].GetComponent<IHealth>() != null) // if they have the IHealth component
             {
-                // Debug.Log("TakeDamage");
-                hitColliders[i].GetComponent<IHealth>().TakeDamage(damageAmount);
+                hitColliders[i].GetComponent<IHealth>().TakeDamage(damageAmount); // tell them to take damage
             }
             else
             {
-                Destroy(gameObject);
+                Destroy(gameObject); // destroy the other object
             }
-            Destroy(gameObject);
+            Destroy(gameObject); // destroy the grenade
         }
     }
 }

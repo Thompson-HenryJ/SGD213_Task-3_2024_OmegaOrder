@@ -7,36 +7,32 @@ public abstract class ProjectileBase : MonoBehaviour
     public Rigidbody ourRigidBody;
     [field: SerializeField] public float speed;
     [field: SerializeField] public float damageAmount;
-    private SphereCollider collider;
+    private SphereCollider ourCollider;
 
 
     // Start is called before the first frame update
     public virtual void Start()
     {
-        collider = GetComponent<SphereCollider>();
+        ourCollider = GetComponent<SphereCollider>();
         ourRigidBody = GetComponent<Rigidbody>();
-        // Debug.Log("Bullet Spawned - Forward: " + ourRigidBody.transform.forward);
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
-        ourRigidBody.AddForce(transform.forward * speed);
-        //Debug.Log("Bullet location on x: " + ourRigidBody.transform.position.x + " y: " + ourRigidBody.transform.position.y + " z: " + ourRigidBody.transform.position.z);
+        ourRigidBody.AddForce(transform.forward * speed); // propel the bullet forward each frame
     }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        // Debug.Log (other);
-        if (other.GetComponent<IHealth>() != null)
+        if (other.GetComponent<IHealth>() != null) // if the object it collides with has the IHealth component
         {
-            // Debug.Log("TakeDamage");
-            other.GetComponent<IHealth>().TakeDamage(damageAmount);
+            other.GetComponent<IHealth>().TakeDamage(damageAmount); // tell the object to take damage
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // destroy the other object
         }
-        Destroy(gameObject);
+        Destroy(gameObject); // destroy the projectile
     }
 }
