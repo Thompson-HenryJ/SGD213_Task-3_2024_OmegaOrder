@@ -29,6 +29,9 @@ public class ChaseState : States
         agent.SetDestination(player.position);
         
     }
+
+    //Reference to states class to run the state machine to set enemy to change state
+
     public override States RunCurrentState()
     {
         if (isInAttackRange)

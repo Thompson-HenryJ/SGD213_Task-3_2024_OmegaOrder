@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerCharacter : CharacterBase
 {
@@ -95,7 +96,11 @@ public class PlayerCharacter : CharacterBase
 
     public void Jump()
     {
-        ourRigidBody.AddForce(0, jumpSpeed, 0, ForceMode.Impulse);
+
+        if (ourRigidBody.velocity.y == 0f)
+        {
+            ourRigidBody.AddForce(0, jumpSpeed, 0, ForceMode.Impulse);
+        }
     }
 
     public void ThrowGrenade()

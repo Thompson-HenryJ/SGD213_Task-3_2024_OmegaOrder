@@ -1790,7 +1790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82156f9f3c184af42b60d2b39e11ba6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthshield: 0
+  healthshield: 1
 --- !u!1 &1894752650
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,6 +2150,30 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8093413650389096707, guid: ea29f966871f9dc4484c8c14bf040656, type: 3}
+      propertyPath: maxShield
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093413650389096707, guid: ea29f966871f9dc4484c8c14bf040656, type: 3}
+      propertyPath: currentHealth
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093413650389096707, guid: ea29f966871f9dc4484c8c14bf040656, type: 3}
+      propertyPath: currentShield
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093413650389096707, guid: ea29f966871f9dc4484c8c14bf040656, type: 3}
+      propertyPath: rechargeDelay
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093413650389096707, guid: ea29f966871f9dc4484c8c14bf040656, type: 3}
+      propertyPath: rechargeAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093413650389096707, guid: ea29f966871f9dc4484c8c14bf040656, type: 3}
+      propertyPath: rechargeInterval
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8093413650389096725, guid: ea29f966871f9dc4484c8c14bf040656, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter

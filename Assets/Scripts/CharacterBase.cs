@@ -82,15 +82,4 @@ public abstract class CharacterBase : MonoBehaviour
         weapons = GetComponents<WeaponBase>();
         // Debug.Log(weapons.Length + " weapons added to " + this);
     }
-
-    public virtual bool WeaponCheck(/*Component weaponToCheck*/)
-    {
-        if (1==1/*weapons array contains weaponToCheck*/) {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 }

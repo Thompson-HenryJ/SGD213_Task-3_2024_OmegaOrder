@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class ProjectileGrenade : ProjectileBase
@@ -16,7 +18,7 @@ public class ProjectileGrenade : ProjectileBase
 
     public override void Update()
     {
-
+        
     }
 
     protected override void OnTriggerEnter(Collider other)

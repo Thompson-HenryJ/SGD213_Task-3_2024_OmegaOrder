@@ -115,11 +115,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ourRigidBody: {fileID: 0}
-  damageRadius: 5
   speed: 30
   damageAmount: 50
-  collider: {fileID: 0}
   timer: 3
+  damageRadius: 5
 --- !u!135 &7470693544532223353
 SphereCollider:
   m_ObjectHideFlags: 0

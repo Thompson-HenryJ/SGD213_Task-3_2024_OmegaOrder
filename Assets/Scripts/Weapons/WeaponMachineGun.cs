@@ -11,5 +11,7 @@ public class WeaponMachineGun : WeaponBase
         maxClip = 30;
         fireDelay = 0.1f;
         projectile = Resources.Load("Proj_Bullet") as GameObject;
+        currentAmmo = maxAmmo;
+        currentClip = maxClip;
     }
 }

@@ -11,5 +11,7 @@ public class WeaponGrenade : WeaponBase
         maxClip = 5;
         fireDelay = 3;
         projectile = Resources.Load("Proj_Grenade") as GameObject;
+        currentAmmo = maxAmmo;
+        currentClip = maxClip;
     }
 }

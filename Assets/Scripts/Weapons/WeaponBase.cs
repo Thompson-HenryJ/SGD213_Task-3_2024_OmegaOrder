@@ -34,19 +34,7 @@ public abstract class WeaponBase : MonoBehaviour, IWeapon
     [field: SerializeField] public float fireDelay { get; set; }
     public float FireDelay { get { return fireDelay; } }
 
-    // Start is called before the first frame update
-    public void Start()
-    {
-        currentAmmo = maxAmmo;
-        currentClip = maxClip;
-        // Debug.Log(this.name + ". CurrentAmmo: " + currentAmmo + ". CurrentClip: " + currentClip + ".");
-    }
 
-    // Update is called once per frame
-    public void Update()
-    {
-
-    }
 
     // Functionality for firing the weapon
     public virtual void Fire()
